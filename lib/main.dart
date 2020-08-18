@@ -1,12 +1,10 @@
+import 'package:aman_liburan/views/LoginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("This should be a menu",style: TextStyle(color: Colors.black),),
-        backgroundColor:Colors.white,
-      ),
-    ),
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LoginPage(),
   ));
 }

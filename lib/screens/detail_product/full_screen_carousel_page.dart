@@ -104,7 +104,7 @@ class _FullScreenCarouselPageState extends State<FullScreenCarouselPage> {
                                   letterSpacing: 1,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w800,
-                                  fontFamily: "Nunito",
+                                  fontFamily: "Poppins",
                                 ),
                               ),
                               Text(
@@ -117,7 +117,7 @@ class _FullScreenCarouselPageState extends State<FullScreenCarouselPage> {
                                   letterSpacing: 1,
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: "Nunito",
+                                  fontFamily: "Poppins",
                                 ),
                               ),
                             ],

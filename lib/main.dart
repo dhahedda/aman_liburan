@@ -23,7 +23,7 @@ class NiGaijin extends StatelessWidget {
     return MaterialApp(
       title: 'Aman Liburan',
       theme: ThemeData(
-        fontFamily: 'Nunito',
+        fontFamily: 'Poppins',
         canvasColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(brightness: Brightness.light),

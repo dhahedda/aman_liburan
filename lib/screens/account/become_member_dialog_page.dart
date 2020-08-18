@@ -117,7 +117,7 @@ class _BecomeMemberDialogPageState extends State<BecomeMemberDialogPage> {
                             letterSpacing: 1,
                             fontSize: 10.0,
                             fontWeight: FontWeight.w600,
-                            fontFamily: "Nunito",
+                            fontFamily: "Poppins",
                           ),
                         ),
                       ),
@@ -305,7 +305,7 @@ class SubscriptionItem extends StatelessWidget {
                   letterSpacing: 1,
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
-                  fontFamily: "Nunito",
+                  fontFamily: "Poppins",
                 ),
               ),
             ),
@@ -327,7 +327,7 @@ class SubscriptionItem extends StatelessWidget {
                       letterSpacing: 1,
                       fontSize: 14.0,
                       fontWeight: FontWeight.w800,
-                      fontFamily: "Nunito",
+                      fontFamily: "Poppins",
                     ),
                   ),
                   Text(
@@ -339,7 +339,7 @@ class SubscriptionItem extends StatelessWidget {
                       letterSpacing: 1,
                       fontSize: 12.0,
                       fontWeight: FontWeight.w700,
-                      fontFamily: "Nunito",
+                      fontFamily: "Poppins",
                     ),
                   ),
                 ],
@@ -364,7 +364,7 @@ class SubscriptionItem extends StatelessWidget {
                                 letterSpacing: 1,
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: "Nunito",
+                                fontFamily: "Poppins",
                               ),
                             )
                           : Text(
@@ -375,7 +375,7 @@ class SubscriptionItem extends StatelessWidget {
                                 letterSpacing: 1,
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: "Nunito",
+                                fontFamily: "Poppins",
                               ),
                             ),
                       decoration: BoxDecoration(

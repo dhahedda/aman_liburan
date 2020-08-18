@@ -63,7 +63,7 @@ class CustomImageButton extends StatelessWidget {
                 letterSpacing: 1,
                 fontSize: 10.0,
                 fontWeight: FontWeight.w800,
-                fontFamily: "Nunito",
+                fontFamily: "Poppins",
               ),
             )
           ],

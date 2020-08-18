@@ -214,7 +214,7 @@ class CreateProductItem extends StatelessWidget {
                                 letterSpacing: 1,
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.w500,
-                                fontFamily: "Nunito",
+                                fontFamily: "Poppins",
                               ),
                             ),
                           ],

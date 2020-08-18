@@ -93,7 +93,7 @@ class _AccountSellerCollectionState extends State<AccountSellerCollection> {
               letterSpacing: 1,
               fontSize: 14.0,
               fontWeight: FontWeight.w800,
-              fontFamily: "Nunito",
+              fontFamily: "Poppins",
             ),
           ),
         ),

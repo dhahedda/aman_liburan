@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "828517044655",
+    "firebase_url": "https://aman-liburan.firebaseio.com",
+    "project_id": "aman-liburan",
+    "storage_bucket": "aman-liburan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828517044655:android:297bd1ec717d0312d89f5a",
+        "android_client_info": {
+          "package_name": "projects.dhahedda.aman_liburan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828517044655-0da8vtpf960v5ic0lntfpef3oljuscsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiAbYUFKV_C8LCbkseQfvgMn945fJG-MM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828517044655-0da8vtpf960v5ic0lntfpef3oljuscsj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

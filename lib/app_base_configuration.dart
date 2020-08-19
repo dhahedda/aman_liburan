@@ -1,3 +1,4 @@
+import 'package:aman_liburan/views/Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/bottom_navigation.dart';
 import 'package:aman_liburan/page.dart';
@@ -55,6 +56,7 @@ class _AppBaseConfigurationState extends State<AppBaseConfiguration> {
   Widget _buildBody() {
     return <BottomPage, WidgetBuilder>{
       BottomPage.page_1: (_) => Dashboard(key: PageStorageKey(BottomPage.page_1)),
+      // BottomPage.page_2: (_) => Profile(key: PageStorageKey(BottomPage.page_2)),
       BottomPage.page_2: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
     }[_page](context);
   }

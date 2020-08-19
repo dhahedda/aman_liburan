@@ -34,107 +34,108 @@ class _RegisterPage extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     Screen().init(context);
-    return SafeArea(
-      child: Container(
-          color: Colors.blue,
-          child: Scaffold(
-            resizeToAvoidBottomPadding: false,
-            backgroundColor: Colors.white,
-            body: Center(
-              child: KeyboardAvoider(
-                autoScroll: true,
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: Screen.blockY * 10),
-                      width: Screen.x,
-                      child: SvgPicture.asset(
-                        'images/waves_blue.svg',
-                        fit: BoxFit.fill,
-                      ),
+    return Container(
+      color: CustomColor().primary,
+      child: SafeArea(
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          backgroundColor: Colors.white,
+          body: Center(
+            child: KeyboardAvoider(
+              autoScroll: true,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: Screen.blockY * 10),
+                    width: Screen.x,
+                    child: SvgPicture.asset(
+                      'images/waves_blue.svg',
+                      fit: BoxFit.fill,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: Screen.blockY * 10),
-                      width: Screen.x,
-                      child: SvgPicture.asset(
-                        'images/waves_green.svg',
-                        fit: BoxFit.fill,
-                      ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: Screen.blockY * 10),
+                    width: Screen.x,
+                    child: SvgPicture.asset(
+                      'images/waves_green.svg',
+                      fit: BoxFit.fill,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: Screen.blockY * 20),
-                      height: Screen.y,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      child: Center(
-                          child: Form(
-                              key: _formKey,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    '\nDaftar\n',
-                                    textAlign: TextAlign.start,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: Screen.blockY * 20),
+                    height: Screen.y,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    child: Center(
+                        child: Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '\nDaftar\n',
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: Screen.blockX * 6),
+                                ),
+                                _Form(
+                                  hint: 'Nama Lengkap',
+                                  controller: _fullname,
+                                ),
+                                _Form(
+                                  hint: "Username",
+                                  controller: _user,
+                                ),
+                                _Form(
+                                  hint: "Password",
+                                  controller: _password,
+                                ),
+                                _Form(
+                                  hint: "Domisili",
+                                  controller: _domicile,
+                                ),
+                                CustomButton(
+                                  color: CustomColor().primary,
+                                  fontColor: Colors.white,
+                                  function: () => print('register'),
+                                  hint: 'REGISTER',
+                                  width: Screen.blockX * 80,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                    text: '\nSudah punya akun? ',
                                     style: GoogleFonts.poppins(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: Screen.blockX * 6),
+                                        color: Colors.grey,
+                                        fontSize: Screen.blockX * 5),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: 'Login',
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.blue),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () => Get.back(),
+                                      )
+                                    ],
                                   ),
-                                  _Form(
-                                    hint: 'Nama Lengkap',
-                                    controller: _fullname,
-                                  ),
-                                  _Form(
-                                    hint: "Username",
-                                    controller: _user,
-                                  ),
-                                  _Form(
-                                    hint: "Password",
-                                    controller: _password,
-                                  ),
-                                  _Form(
-                                    hint: "Domisili",
-                                    controller: _domicile,
-                                  ),
-                                  CustomButton(
-                                    color: CustomColor().primary,
-                                    fontColor: Colors.white,
-                                    function: () => print('register'),
-                                    hint: 'REGISTER',
-                                    width: Screen.blockX * 80,
-                                  ),
-                                  RichText(
-                                    text: TextSpan(
-                                      text: '\nSudah punya akun? ',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.grey,
-                                          fontSize: Screen.blockX * 5),
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                          text: 'Login',
-                                          style: GoogleFonts.poppins(
-                                              color: Colors.blue),
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () => Get.back(),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ))),
-                    ),
-                    Container(
-                      width: Screen.blockX * 25,
-                      child: Image.asset('images/ic.png'),
-                    ),
-                  ],
-                ),
+                                )
+                              ],
+                            ))),
+                  ),
+                  Container(
+                    width: Screen.blockX * 25,
+                    child: Image.asset('images/ic.png'),
+                  ),
+                ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:aman_liburan/services/Screen.dart';
+import 'package:aman_liburan/services/UserServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: unused_import
@@ -28,103 +29,104 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     Screen().init(context);
-    return SafeArea(
-      child: Container(
-          color: Colors.blue,
-          child: Scaffold(
-            backgroundColor: Colors.white,
-            body: Center(
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    top: Screen.blockY * 0,
-                    left: Screen.blockX * 0,
-                    width: Screen.blockX * 30,
-                    child: Image.asset('images/ic.png'),
+    return Container(
+      color: CustomColor().primary,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: Screen.blockY * 0,
+                  left: Screen.blockX * 0,
+                  width: Screen.blockX * 30,
+                  child: Image.asset('images/ic.png'),
+                ),
+                Positioned(
+                  top: Screen.blockY * 25,
+                  left: 0,
+                  width: Screen.x,
+                  child: SvgPicture.asset(
+                    'images/waves_blue.svg',
+                    fit: BoxFit.fill,
                   ),
-                  Positioned(
-                    top: Screen.blockY * 25,
-                    left: 0,
-                    width: Screen.x,
-                    child: SvgPicture.asset(
-                      'images/waves_blue.svg',
-                      fit: BoxFit.fill,
-                    ),
+                ),
+                Positioned(
+                  top: Screen.blockY * 25,
+                  left: 0,
+                  width: Screen.x,
+                  child: SvgPicture.asset(
+                    'images/waves_green.svg',
+                    fit: BoxFit.fill,
                   ),
-                  Positioned(
-                    top: Screen.blockY * 25,
-                    left: 0,
-                    width: Screen.x,
-                    child: SvgPicture.asset(
-                      'images/waves_green.svg',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Positioned(
-                    top: Screen.blockY * 35,
-                    width: Screen.blockX * 100,
-                    height: Screen.blockY * 65,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                              top: 0,
-                              left: Screen.blockX * 10,
-                              width: Screen.blockX * 80,
-                              child: Form(
-                                  key: _formKey,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        '\nLogin',
-                                        textAlign: TextAlign.start,
+                ),
+                Positioned(
+                  top: Screen.blockY * 35,
+                  width: Screen.blockX * 100,
+                  height: Screen.blockY * 65,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            top: 0,
+                            left: Screen.blockX * 10,
+                            width: Screen.blockX * 80,
+                            child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      '\nLogin',
+                                      textAlign: TextAlign.start,
+                                      style: GoogleFonts.poppins(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: Screen.blockX * 6),
+                                    ),
+                                    _Form(hint: "Email"),
+                                    _Form(hint: "Kata sandi"),
+                                    Text('\n\n'),
+                                    CustomButton(
+                                      color: CustomColor().primary,
+                                      fontColor: Colors.white,
+                                      function: () => UserServices()
+                                          .signIn(_user.text, _password.text),
+                                      hint: 'LOGIN',
+                                      width: Screen.blockX * 80,
+                                    ),
+                                    CustomButton(
+                                      color: Colors.white,
+                                      fontColor: CustomColor().primary,
+                                      function: () => Get.to(RegisterPage()),
+                                      hint: 'REGISTER',
+                                      width: Screen.blockX * 80,
+                                    ),
+                                    FlatButton(
+                                      child: Text(
+                                        'Lupa password?',
                                         style: GoogleFonts.poppins(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: Screen.blockX * 6),
+                                            fontSize: Screen.blockX * 5),
                                       ),
-                                      _Form(hint: "Email"),
-                                      _Form(hint: "Kata sandi"),
-                                      Text('\n\n'),
-                                      CustomButton(
-                                        color: CustomColor().primary,
-                                        fontColor: Colors.white,
-                                        function: () => print('login'),
-                                        hint: 'LOGIN',
-                                        width: Screen.blockX * 80,
-                                      ),
-                                      CustomButton(
-                                        color: Colors.white,
-                                        fontColor: CustomColor().primary,
-                                        function: () => Get.to(RegisterPage()),
-                                        hint: 'REGISTER',
-                                        width: Screen.blockX * 80,
-                                      ),
-                                      FlatButton(
-                                        child: Text(
-                                          'Lupa password?',
-                                          style: GoogleFonts.poppins(
-                                              fontSize: Screen.blockX * 5),
-                                        ),
-                                        onPressed: null,
-                                      )
-                                    ],
-                                  ))),
-                        ],
-                      ),
+                                      onPressed: null,
+                                    )
+                                  ],
+                                ))),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

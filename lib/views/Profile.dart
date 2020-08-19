@@ -16,7 +16,7 @@ class Profile extends StatelessWidget {
     return Container(
       color: CustomColor().primary,
       child: SafeArea(
-        child: Scaffold(body: _UserProfile()),
+        child: Scaffold(backgroundColor: Colors.white, body: _UserProfile()),
       ),
     );
   }
@@ -37,6 +37,20 @@ class _UserProfile extends StatelessWidget {
                 child: SvgPicture.asset(
                   'images/green_half_circle.svg',
                   fit: BoxFit.fill,
+                ),
+              ),
+              Container(
+                width: Screen.x,
+                child: SvgPicture.asset(
+                  'images/img_profile_decor.svg',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+              Container(
+                width: Screen.x,
+                child: SvgPicture.asset(
+                  'images/img_profile_mount.svg',
+                  fit: BoxFit.fitHeight,
                 ),
               ),
               Center(

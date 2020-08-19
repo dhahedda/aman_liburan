@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: unused_import
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'RegisterPage.dart';
 
 TextEditingController _password = TextEditingController();
 TextEditingController _user = TextEditingController();
@@ -100,7 +103,7 @@ class LoginPageState extends State<LoginPage> {
                                       CustomButton(
                                         color: Colors.white,
                                         fontColor: CustomColor().primary,
-                                        function: () => print('REGISTER'),
+                                        function: () => Get.to(RegisterPage()),
                                         hint: 'REGISTER',
                                         width: Screen.blockX * 80,
                                       ),
@@ -114,23 +117,6 @@ class LoginPageState extends State<LoginPage> {
                                       )
                                     ],
                                   ))),
-                          Positioned(
-                              top: Screen.blockY * 67,
-                              left: Screen.blockX * 15,
-                              right: Screen.blockX * 51,
-                              child: Button(
-                                action: 'Masuk',
-                                function: () => null,
-                              )),
-                          Positioned(
-                            top: Screen.blockY * 67,
-                            left: Screen.blockX * 51,
-                            right: Screen.blockX * 15,
-                            child: Button(
-                              action: 'Daftar',
-                              function: () => null,
-                            ),
-                          )
                         ],
                       ),
                     ),
@@ -162,28 +148,17 @@ class _FormState extends State<_Form> {
   ]);
   @override
   Widget build(BuildContext context) {
-    if (widget.hint == "Kata sandi") {
-      return TextFormField(
-        obscureText: true,
-        controller: _password,
-        style: TextStyle(color: Colors.white),
-        validator: formValidator,
-        decoration: InputDecoration(
-            hintText: widget.hint,
-            hoverColor: Colors.white,
-            hintStyle: GoogleFonts.poppins(color: Colors.grey),
-            fillColor: Colors.white,
-            focusColor: Colors.white),
-      );
-    } else {
-      return TextFormField(
-        controller: _user,
-        validator: formValidator,
-        style: TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-            hintText: widget.hint,
-            hintStyle: GoogleFonts.poppins(color: Colors.grey)),
-      );
-    }
+    return TextFormField(
+      obscureText: widget.hint == "Kata sandi" ? true : false,
+      controller: widget.hint == "Kata sandi" ? _password : _user,
+      style: TextStyle(color: Colors.black87),
+      validator: formValidator,
+      decoration: InputDecoration(
+          hintText: widget.hint,
+          hoverColor: Colors.white,
+          hintStyle: GoogleFonts.poppins(color: Colors.grey),
+          fillColor: Colors.white,
+          focusColor: Colors.white),
+    );
   }
 }

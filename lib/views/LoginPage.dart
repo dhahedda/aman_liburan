@@ -1,4 +1,5 @@
 import 'package:aman_liburan/services/Screen.dart';
+import 'package:aman_liburan/services/UserServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: unused_import
@@ -95,7 +96,8 @@ class LoginPageState extends State<LoginPage> {
                                     CustomButton(
                                       color: CustomColor().primary,
                                       fontColor: Colors.white,
-                                      function: () => print('login'),
+                                      function: () => UserServices()
+                                          .signIn(_user.text, _password.text),
                                       hint: 'LOGIN',
                                       width: Screen.blockX * 80,
                                     ),

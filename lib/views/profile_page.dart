@@ -1,4 +1,5 @@
 import 'package:aman_liburan/services/Screen.dart';
+import 'package:aman_liburan/views/update_profile_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,25 +71,28 @@ class _UserProfile extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomButton(
-                      color: Colors.white,
-                      fontColor: CustomColor().primary,
-                      hint: 'LOGIN',
-                      width: Screen.blockX * 30,
-                      function: () => Get.to(LoginPage()),
-                    ),
-                    CustomButton(
-                      color: CustomColor().primary,
-                      fontColor: Colors.white,
-                      hint: 'DAFTAR',
-                      width: Screen.blockX * 30,
-                      function: () => Get.to(RegisterPage()),
-                    )
-                  ],
+                child: Container(
+                  margin: EdgeInsets.only(top: Screen.blockY * 2),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomButton(
+                        color: Colors.white,
+                        fontColor: CustomColor().primary,
+                        hint: 'LOGIN',
+                        width: Screen.blockX * 30,
+                        function: () => Get.to(LoginPage()),
+                      ),
+                      CustomButton(
+                        color: CustomColor().primary,
+                        fontColor: Colors.white,
+                        hint: 'DAFTAR',
+                        width: Screen.blockX * 30,
+                        function: () => Get.to(RegisterPage()),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -197,6 +201,7 @@ class _UserProfile extends StatelessWidget {
       fontColor: Colors.white,
       width: Screen.blockX * 80,
       hint: 'UBAH PROFIL',
+      function: () => Get.to(UpdateProfile()),
     );
   }
 

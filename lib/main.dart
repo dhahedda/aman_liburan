@@ -1,5 +1,5 @@
-import 'package:aman_liburan/views/LoginPage.dart';
-import 'package:aman_liburan/views/Profile.dart';
+import 'package:aman_liburan/views/login_page.dart';
+import 'package:aman_liburan/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

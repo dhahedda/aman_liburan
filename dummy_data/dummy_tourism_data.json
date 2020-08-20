@@ -1,0 +1,54 @@
+{
+  "T001" : {
+    "place_category" : 1,
+    "place_description" : "Tebing keraton atau bukit keraton merupakan satu bukit dengan tebing terjal yang menghadap langsung ke area Taman Hutan Raya Juanda Bandung. Ditambah dengan background gunung tangkuban perahu, menambah keindahan area ini.",
+    "place_hour_close" : "05:00",
+    "place_hour_open" : "19:00",
+    "place_latitude" : -6.7934325,
+    "place_location" : "Bandung",
+    "place_longitude" : 108.1784457,
+    "place_max_visitor" : 10,
+    "place_name" : "Tebing Keraton, Jawa Barat",
+    "place_picture" : "tebing-keraton.jpg",
+    "place_price" : "Free (tidak termasuk tiket parkir)"
+  },
+  "T002" : {
+    "place_category" : 1,
+    "place_description" : "Terasering Panyaweuyan berada di Kecamatan Argapura Kabupaten Majalengka Jawa Barat merupakan hamparan bukit dan juga lembah yang terkenal memanjakan mata setiap mereka yang berkunjung kesana. ",
+    "place_hour_close" : "00:00",
+    "place_hour_open" : "23:59",
+    "place_latitude" : -6.9169355,
+    "place_location" : "Majalengka, Jawa Barat",
+    "place_longitude" : 108.3479226,
+    "place_max_visitor" : 30,
+    "place_name" : "Terasering Panyawean",
+    "place_picture" : "panyawean.jpg",
+    "place_price" : "Rp. 5.000 (belum termasuk tiket parkir)"
+  },
+  "T003" : {
+    "place_category" : 1,
+    "place_description" : "Museum Geologi Bandung adalah sebuah museum yang sudah menjadi bangunan bersejarah di kota Bandung, sehingga menarik minat banyak wisatawan. Museum yang dilindungi dan dirawat oleh pemerintah ini dibangun pada tanggal 16 Mei 1928 dan sempat direnovasi dengan dana bantuan dari Jepang sehingga saat ini tetap dalam kondiri baik sebagai tempat wisata yang layak dikunjungi di Bandung. Setelah renovasi, Museum Geologi Bandung dibuka kembali oleh Megawati Soekarnoputri pada tanggal 23 Agustus 2000.",
+    "place_hour_close" : "08:00",
+    "place_hour_open" : "16:00",
+    "place_latitude" : -6.6964368,
+    "place_location" : "Bandung, Jawa Barat",
+    "place_longitude" : 107.2395392,
+    "place_max_visitor" : 50,
+    "place_name" : "Bandung Geological Museum",
+    "place_picture" : "musium-geologi.jpg",
+    "place_price" : "Rp. 2.000 - Rp. 10.000"
+  },
+  "T004" : {
+    "place_category" : 5,
+    "place_description" : "Borobudur merupakan candi terbesar di Indonesia. Candi Borobudur yang terletak di Magelang, Jawa Tengah, selain menjadi obyek wisata yang ramai dikunjungi, juga menjadi pusat ibadat bagi penganut Buddha di Indonesia khususnya pada setiap perayaan Waisak. Hal ini sesuai dengan arti namanya yaitu 'biara di perbukitan'. Saat ini Borobudur ditetapkan sebagai salah satu Warisan Dunia UNESCO.",
+    "place_hour_close" : "06:00",
+    "place_hour_open" : "17:00",
+    "place_latitude" : -7.1472845,
+    "place_location" : "Magelang, Jawa Tengah",
+    "place_longitude" : 108.1846383,
+    "place_max_visitor" : 50,
+    "place_name" : "Candi Borobudur",
+    "place_picture" : "candi-borobudur.jpg",
+    "place_price" : "Rp. 25.000 - Rp. 50.000"
+  }
+}

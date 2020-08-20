@@ -1,4 +1,4 @@
-import 'package:aman_liburan/services/Screen.dart';
+import 'package:aman_liburan/services/screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -171,9 +171,9 @@ class _RegisterPage extends State<RegisterPage> {
         child: Scaffold(
           resizeToAvoidBottomPadding: false,
           backgroundColor: Colors.white,
-          body: Center(
-            child: KeyboardAvoider(
-              autoScroll: true,
+          body: KeyboardAvoider(
+            autoScroll: true,
+            child: Center(
               child: Stack(
                 children: <Widget>[_decoration(), _formRegister()],
               ),

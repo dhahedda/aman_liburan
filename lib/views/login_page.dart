@@ -1,5 +1,6 @@
-import 'package:aman_liburan/services/Screen.dart';
-import 'package:aman_liburan/services/UserServices.dart';
+import 'package:aman_liburan/services/consume_api.dart';
+import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // ignore: unused_import
@@ -122,7 +123,7 @@ class LoginPageState extends State<LoginPage> {
                             CustomButton(
                               color: Colors.white,
                               fontColor: CustomColor().primary,
-                              function: () => Get.to(RegisterPage()),
+                              function: () => ConsumeApi().tes(),
                               hint: 'REGISTER',
                               width: Screen.blockX * 80,
                             ),

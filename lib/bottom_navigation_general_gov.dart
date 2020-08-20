@@ -13,29 +13,29 @@ class BottomNavigation extends StatelessWidget {
   Color _color(BottomPage page) => this.page == page ? Theme.Colors.turqoiseDark : Theme.Colors.turqoiseNormal;
 
 
-  static const Map<BottomPage, String> icons = {
-    BottomPage.page_1: "assets/images/bottom_navigation/bx_bx-home-alt.png",
-    BottomPage.page_2: "assets/images/bottom_navigation/ant-design_user-outlined.png",
-  };
-
-  static const Map<BottomPage, String> names = {
-    BottomPage.page_1: 'Home',
-    BottomPage.page_2: 'Profile',
-  };
-
   // static const Map<BottomPage, String> icons = {
-  //   BottomPage.page_1: "assets/images/bottom_navigation/stats.png",
-  //   BottomPage.page_2: "assets/images/bottom_navigation/tree.png",
-  //   BottomPage.page_3: "assets/images/bottom_navigation/track.png",
-  //   BottomPage.page_4: "assets/images/bottom_navigation/users.png",
+  //   BottomPage.page_1: "assets/images/bottom_navigation/bx_bx-home-alt.png",
+  //   BottomPage.page_2: "assets/images/bottom_navigation/ant-design_user-outlined.png",
   // };
 
   // static const Map<BottomPage, String> names = {
-  //   BottomPage.page_1: 'Beranda',
-  //   BottomPage.page_2: 'Wisata',
-  //   BottomPage.page_3: 'Track',
-  //   BottomPage.page_4: 'Pengguna',
+  //   BottomPage.page_1: 'Home',
+  //   BottomPage.page_2: 'Profile',
   // };
+
+  static const Map<BottomPage, String> icons = {
+    BottomPage.page_1: "assets/images/bottom_navigation/stats.png",
+    BottomPage.page_2: "assets/images/bottom_navigation/tree.png",
+    BottomPage.page_3: "assets/images/bottom_navigation/track.png",
+    BottomPage.page_4: "assets/images/bottom_navigation/users.png",
+  };
+
+  static const Map<BottomPage, String> names = {
+    BottomPage.page_1: 'Beranda',
+    BottomPage.page_2: 'Wisata',
+    BottomPage.page_3: 'Track',
+    BottomPage.page_4: 'Pengguna',
+  };
 
   Widget _buildTile(BottomPage bottomPage) {
     return Expanded(
@@ -94,8 +94,8 @@ class BottomNavigation extends StatelessWidget {
               children: <Widget>[
                 _buildTile(BottomPage.page_1),
                 _buildTile(BottomPage.page_2),
-                // _buildTile(BottomPage.page_3),
-                // _buildTile(BottomPage.page_4),
+                _buildTile(BottomPage.page_3),
+                _buildTile(BottomPage.page_4),
               ],
             ),
           ),

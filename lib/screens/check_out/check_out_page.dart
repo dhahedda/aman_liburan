@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
-class CheckInPage extends StatefulWidget {
-  const CheckInPage({Key key}) : super(key: key);
+class CheckOutPage extends StatefulWidget {
+  const CheckOutPage({Key key}) : super(key: key);
 
   @override
-  _CheckInPageState createState() => _CheckInPageState();
+  _CheckOutPageState createState() => _CheckOutPageState();
 }
 
-class _CheckInPageState extends State<CheckInPage> {
-  final TextEditingController _nameController = TextEditingController();
+class _CheckOutPageState extends State<CheckOutPage> {
+  final TextEditingController _searchController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _domicileController = TextEditingController();
   final TextEditingController _temperatureController = TextEditingController();
@@ -20,7 +20,7 @@ class _CheckInPageState extends State<CheckInPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -37,7 +37,7 @@ class _CheckInPageState extends State<CheckInPage> {
                     style: TextStyle(fontFamily: "Poppins"),
                   ),
                   Text(
-                    'Check In Pengunjung',
+                    'Check Out Pengunjung',
                     style: TextStyle(
                       letterSpacing: 1.0,
                       fontSize: 24.0,
@@ -49,7 +49,7 @@ class _CheckInPageState extends State<CheckInPage> {
               ),
             ),
             Expanded(
-              child: Image.asset("assets/images/illustrations/marginalia-uploading.png"),
+              child: Image.asset("assets/images/illustrations/marginalia-669 1.png"),
             ),
           ],
         ),
@@ -243,7 +243,7 @@ class _CheckInPageState extends State<CheckInPage> {
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildProccessButton() {
     return Padding(
       padding: const EdgeInsets.only(top: 24.0, bottom: 16.0),
       child: FractionallySizedBox(
@@ -259,7 +259,7 @@ class _CheckInPageState extends State<CheckInPage> {
             ),
             color: Theme.Colors.turqoiseNormal,
             child: Text(
-              'Simpan Data',
+              'Proses Check Out',
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 1,
@@ -273,36 +273,39 @@ class _CheckInPageState extends State<CheckInPage> {
     );
   }
 
-  Widget _buildAddButton() {
-    return FractionallySizedBox(
-      widthFactor: 0.9,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Theme.Colors.turqoiseNormal,
-              blurRadius: 7.5,
-              offset: Offset(0, 2.0),
-            ),
-          ],
-        ),
-        child: ButtonTheme(
-          minWidth: double.infinity,
-          child: FlatButton(
-            onPressed: () {},
-            padding: const EdgeInsets.all(12.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            color: Colors.white,
-            child: Text(
-              'Tambah Pengunjung',
-              style: TextStyle(
+  Widget _buildSearchButton() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 24.0, bottom: 16.0),
+      child: FractionallySizedBox(
+        widthFactor: 0.9,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
                 color: Theme.Colors.turqoiseNormal,
-                letterSpacing: 1,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
+                blurRadius: 7.5,
+                offset: Offset(0, 2.0),
+              ),
+            ],
+          ),
+          child: ButtonTheme(
+            minWidth: double.infinity,
+            child: FlatButton(
+              onPressed: () {},
+              padding: const EdgeInsets.all(12.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              color: Colors.white,
+              child: Text(
+                'Cari Data',
+                style: TextStyle(
+                  color: Theme.Colors.turqoiseNormal,
+                  letterSpacing: 1,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ),
           ),
@@ -318,17 +321,92 @@ class _CheckInPageState extends State<CheckInPage> {
       physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       children: [
         _buildHeader(),
-        _buildTextField(_nameController, 'Nama Lengkap Pengujung'),
-        _buildSexInput(),
-        _buildTextField(_ageController, 'Usia Pengguna'),
-        _buildTextField(_domicileController, 'Domisili'),
-        _buildTextField(_temperatureController, 'Suhu Tubuh'),
-        _buildQuestionareHeader(),
-        _buildQuestionnaire1Input(),
-        _buildQuestionnaire2Input(),
-        _buildQuestionnaire3Input(),
-        _buildSaveButton(),
-        _buildAddButton(),
+        _buildTextField(_searchController, 'Masukkan Kode Unik atau Nama Pengunjung'),
+        _buildSearchButton(),
+        Card(
+          elevation: 8.0,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Lee Donghae'),
+                        Text('Suhu tubuh: 36,5 °C'),
+                        Text('Pengunjung: 5 orang'),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('UX007'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Asal'),
+                        Text('Banyuwangi Utara'),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Usia'),
+                        Text('25 Tahun'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Check In'),
+                        Text('8:00'),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Check Out'),
+                        Text('8:00'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        _buildProccessButton(),
       ],
     );
   }

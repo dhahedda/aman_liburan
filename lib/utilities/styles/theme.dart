@@ -13,6 +13,7 @@ class Colors {
   static const Color turqoiseNormal = const Color(0xFF66C6BA);
   static const Color turqoiseLight = const Color(0xFFA3E5D9);
   static const Color turqoiseLighter = const Color(0xFFD5F4E5);
+  static const Color grey3 = const Color(0xFF828282);
 
   static const primaryGradient = const LinearGradient(
     colors: const [signinGradientStart, signinGradientEnd],

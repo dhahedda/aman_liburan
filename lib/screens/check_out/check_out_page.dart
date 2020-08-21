@@ -316,75 +316,21 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0, bottom: 100.0),
-      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      children: [
-        _buildHeader(),
-        _buildTextField(_searchController, 'Masukkan Kode Unik atau Nama Pengunjung'),
-        _buildSearchButton(),
-        Card(
-          elevation: 8.0,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Lee Donghae',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          Text(
-                            'Suhu tubuh: 36,5 °C',
-                            style: TextStyle(
-                              color: Theme.Colors.turqoiseNormal,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Text(
-                            'Pengunjung: 5 orang',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'UX007',
-                            style: TextStyle(
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Row(
+    return Scaffold(
+      body: ListView(
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0, bottom: 100.0),
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        children: [
+          _buildHeader(),
+          _buildTextField(_searchController, 'Masukkan Kode Unik atau Nama Pengunjung'),
+          _buildSearchButton(),
+          Card(
+            elevation: 8.0,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -393,9 +339,102 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Asal'),
                             Text(
-                              'Banyuwangi Utara',
+                              'Lee Donghae',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            Text(
+                              'Suhu tubuh: 36,5 °C',
+                              style: TextStyle(
+                                color: Theme.Colors.turqoiseNormal,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              'Pengunjung: 5 orang',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              'UX007',
+                              style: TextStyle(
+                                fontSize: 40.0,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Asal'),
+                              Text(
+                                'Banyuwangi Utara',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Usia'),
+                              Text(
+                                '25 Tahun',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Check In'),
+                            Text(
+                              '8:00',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Poppins',
@@ -408,9 +447,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Usia'),
+                            Text('Check Out'),
                             Text(
-                              '25 Tahun',
+                              '8:00',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontFamily: 'Poppins',
@@ -421,50 +460,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       ),
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Check In'),
-                          Text(
-                            '8:00',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Check Out'),
-                          Text(
-                            '8:00',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        _buildProccessButton(),
-      ],
+          _buildProccessButton(),
+        ],
+      ),
     );
   }
 }

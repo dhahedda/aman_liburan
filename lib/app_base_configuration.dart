@@ -1,6 +1,7 @@
 import 'package:aman_liburan/screens/add_product/add_product_1st_page.dart';
 import 'package:aman_liburan/screens/appointment/appointment_page.dart';
-import 'package:aman_liburan/screens/check_in/check_in_page.dart';
+import 'package:aman_liburan/screens/check_in/check_in_form_page.dart';
+import 'package:aman_liburan/screens/check_in/check_in_ticket_page.dart';
 import 'package:aman_liburan/screens/check_out/check_out_page.dart';
 import 'package:aman_liburan/views/Profile.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +66,9 @@ class _AppBaseConfigurationState extends State<AppBaseConfiguration> {
       // BottomPage.page_2: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
       // BottomPage.page_3: (_) => AppointmentPage(key: PageStorageKey(BottomPage.page_3)),
       // BottomPage.page_4: (_) => AddProduct1stPage(key: PageStorageKey(BottomPage.page_4), isEditProduct: false),
-      BottomPage.page_1: (_) => CheckInPage(key: PageStorageKey(BottomPage.page_1)),
-      BottomPage.page_2: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
+      BottomPage.page_1: (_) => CheckInFormPage(key: PageStorageKey(BottomPage.page_1)),
+      // BottomPage.page_2: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
+      BottomPage.page_2: (_) => CheckInTicketPage(key: PageStorageKey(BottomPage.page_2)),
       BottomPage.page_3: (_) => CheckOutPage(key: PageStorageKey(BottomPage.page_3)),
       BottomPage.page_4: (_) => AddProduct1stPage(key: PageStorageKey(BottomPage.page_4), isEditProduct: false),
     }[_page](context);

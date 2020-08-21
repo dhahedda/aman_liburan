@@ -115,18 +115,20 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
   }
 
   Widget _buildError(BuildContext context, String message) {
-    return Container(
-      width: SizeConfig.getWidth(context),
-      height: SizeConfig.getHeight(context),
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          message,
-          style: TextStyle(
-            height: 1.4,
-            color: Colors.black54,
-            fontWeight: FontWeight.bold,
-            fontSize: 11.0,
+    return Scaffold(
+      body: Container(
+        width: SizeConfig.getWidth(context),
+        height: SizeConfig.getHeight(context),
+        color: Colors.white,
+        child: Center(
+          child: Text(
+            message,
+            style: TextStyle(
+              height: 1.4,
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              fontSize: 11.0,
+            ),
           ),
         ),
       ),
@@ -385,14 +387,16 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
   }
 
   Widget _buildBody(BuildContext context, DashboardState state) {
-    return RefreshIndicator(
-      onRefresh: () {
-        BlocProvider.of<DashboardBloc>(context).add(
-          GetApiDashboardEvent(),
-        );
-        return _refreshCompleter.future;
-      },
-      child: _buildContent(context, state),
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: () {
+          BlocProvider.of<DashboardBloc>(context).add(
+            GetApiDashboardEvent(),
+          );
+          return _refreshCompleter.future;
+        },
+        child: _buildContent(context, state),
+      ),
     );
   }
 

@@ -1,14 +1,15 @@
+import 'package:aman_liburan/screens/check_in/check_in_ticket_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
-class CheckInPage extends StatefulWidget {
-  const CheckInPage({Key key}) : super(key: key);
+class CheckInFormPage extends StatefulWidget {
+  const CheckInFormPage({Key key}) : super(key: key);
 
   @override
-  _CheckInPageState createState() => _CheckInPageState();
+  _CheckInFormPageState createState() => _CheckInFormPageState();
 }
 
-class _CheckInPageState extends State<CheckInPage> {
+class _CheckInFormPageState extends State<CheckInFormPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _domicileController = TextEditingController();
@@ -21,6 +22,9 @@ class _CheckInPageState extends State<CheckInPage> {
   @override
   void dispose() {
     _nameController.dispose();
+    _ageController.dispose();
+    _domicileController.dispose();
+    _temperatureController.dispose();
     super.dispose();
   }
 
@@ -252,7 +256,14 @@ class _CheckInPageState extends State<CheckInPage> {
           minWidth: double.infinity,
           child: RaisedButton(
             elevation: 10.0,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CheckInTicketPage(),
+                ),
+              );
+            },
             padding: const EdgeInsets.all(12.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
@@ -313,23 +324,25 @@ class _CheckInPageState extends State<CheckInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0, bottom: 100.0),
-      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      children: [
-        _buildHeader(),
-        _buildTextField(_nameController, 'Nama Lengkap Pengujung'),
-        _buildSexInput(),
-        _buildTextField(_ageController, 'Usia Pengguna'),
-        _buildTextField(_domicileController, 'Domisili'),
-        _buildTextField(_temperatureController, 'Suhu Tubuh'),
-        _buildQuestionareHeader(),
-        _buildQuestionnaire1Input(),
-        _buildQuestionnaire2Input(),
-        _buildQuestionnaire3Input(),
-        _buildSaveButton(),
-        _buildAddButton(),
-      ],
+    return Scaffold(
+      body: ListView(
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0, bottom: 100.0),
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        children: [
+          _buildHeader(),
+          _buildTextField(_nameController, 'Nama Lengkap Pengujung'),
+          _buildSexInput(),
+          _buildTextField(_ageController, 'Usia Pengguna'),
+          _buildTextField(_domicileController, 'Domisili'),
+          _buildTextField(_temperatureController, 'Suhu Tubuh'),
+          _buildQuestionareHeader(),
+          _buildQuestionnaire1Input(),
+          _buildQuestionnaire2Input(),
+          _buildQuestionnaire3Input(),
+          _buildSaveButton(),
+          _buildAddButton(),
+        ],
+      ),
     );
   }
 }

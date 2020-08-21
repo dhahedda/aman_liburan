@@ -7,7 +7,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:aman_liburan/blocs/appointment_seller/appointment_seller_bloc.dart';
 import 'package:aman_liburan/blocs/chat/chat_bloc.dart';
-import 'package:aman_liburan/components/data_session.dart';
 import 'package:aman_liburan/models/param/api_param.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/screens/account/reschedule_appointment_dialog_page.dart';
@@ -373,7 +372,7 @@ class _AppointmentSellerPageState extends State<AppointmentSellerPage> {
         dynamic _chatBloc = BlocProvider.of<ChatBloc>(context);
         //TODO fix chat screen navigated twice
         if (chatState.currentChatLobbyResponse != null) {
-          final userId = await DataSession().getUserId();
+          // final userId = await DataSession().getUserId();
           // Navigator.push(
           //   context,
           //   MaterialPageRoute(

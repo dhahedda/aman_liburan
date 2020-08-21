@@ -3,12 +3,9 @@ import 'package:aman_liburan/services/screen.dart';
 import 'package:aman_liburan/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// ignore: unused_import
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'register_page.dart';
 
 TextEditingController _password = TextEditingController();
 TextEditingController _user = TextEditingController();

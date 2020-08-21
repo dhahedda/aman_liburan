@@ -1,17 +1,11 @@
 import 'package:aman_liburan/services/screen.dart';
 import 'package:aman_liburan/views/update_profile_page.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../services/screen.dart';
-import '../services/screen.dart';
-import '../services/screen.dart';
-import '../services/screen.dart';
-import '../services/screen.dart';
 import 'login_page.dart';
 import 'register_page.dart';
 

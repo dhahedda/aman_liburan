@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:aman_liburan/blocs/appointment_buyer/appointment_buyer_bloc.dart';
 import 'package:aman_liburan/blocs/chat/chat_bloc.dart';
-import 'package:aman_liburan/components/data_session.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
@@ -31,7 +30,7 @@ class _AppointmentBuyerPageState extends State<AppointmentBuyerPage> {
     @required BuildContext context,
     @required ChatLobbyResponse chatLobby,
   }) async {
-    final userId = await DataSession().getUserId();
+    // final userId = await DataSession().getUserId();
     // Navigator.push(
     //   context,
     //   MaterialPageRoute(
@@ -512,7 +511,7 @@ class _AppointmentBuyerPageState extends State<AppointmentBuyerPage> {
       listener: (context, chatState) async {
         dynamic _chatBloc = BlocProvider.of<ChatBloc>(context);
         if (chatState.currentChatLobbyResponse != null) {
-          final userId = await DataSession().getUserId();
+          // final userId = await DataSession().getUserId();
           // Navigator.push(
           //   context,
           //   MaterialPageRoute(

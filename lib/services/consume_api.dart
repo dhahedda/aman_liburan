@@ -7,7 +7,7 @@ class ConsumeApi {
   tes() async {
     var token = await UserServices().jwt();
     var result = await http.get('$_baseUrl/getprofile',
-        headers: {HttpHeaders.authorizationHeader: "${token}"});
+        headers: {HttpHeaders.authorizationHeader: "$token"});
     print(result.body);
   }
 }

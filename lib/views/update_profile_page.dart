@@ -13,8 +13,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
   TextEditingController _fullname = TextEditingController();
   TextEditingController _username = TextEditingController();
   TextEditingController _age = TextEditingController();
-  TextEditingController _password = TextEditingController();
-  TextEditingController _domicile = TextEditingController();
+  // TextEditingController _password = TextEditingController();
+  // TextEditingController _domicile = TextEditingController();
 
   String gender = 'male';
   Widget _appBar() {

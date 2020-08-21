@@ -417,75 +417,75 @@ class _SearchPageState extends State<SearchPage> with SingleTickerProviderStateM
           // );
         }
 
-        Widget _sortListTile({@required String sortBy, bool isTopMost}) {
-          bool isSelected = false;
-          if (_sortBy == sortBy) isSelected = true;
-          if (isTopMost == null) isTopMost = false;
-          return Column(
-            children: <Widget>[
-              isTopMost ? Divider(height: 1.0) : Container(),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    _sortBy = sortBy;
-                  });
-                  freshLoadData();
-                  // _searchBloc.add(SearchSortFilterEvent(
-                  //   query: _searchController.text != '' ? _searchController.text : null,
-                  //   category: widget.category,
-                  //   sortBy: _sortBy,
-                  // ));
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
-                  height: 50.0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(sortBy == 'highestprice'
-                          ? 'Highest Price'
-                          : sortBy == 'lowestprice' ? 'Lowest Price' : '${sortBy.substring(0, 1)[0].toUpperCase()}${sortBy.substring(1)}'),
-                      isSelected ? Icon(Icons.check, color: Colors.green) : Container(),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          );
-        }
+        // Widget _sortListTile({@required String sortBy, bool isTopMost}) {
+        //   bool isSelected = false;
+        //   if (_sortBy == sortBy) isSelected = true;
+        //   if (isTopMost == null) isTopMost = false;
+        //   return Column(
+        //     children: <Widget>[
+        //       isTopMost ? Divider(height: 1.0) : Container(),
+        //       InkWell(
+        //         onTap: () {
+        //           setState(() {
+        //             _sortBy = sortBy;
+        //           });
+        //           freshLoadData();
+        //           // _searchBloc.add(SearchSortFilterEvent(
+        //           //   query: _searchController.text != '' ? _searchController.text : null,
+        //           //   category: widget.category,
+        //           //   sortBy: _sortBy,
+        //           // ));
+        //           Navigator.pop(context);
+        //         },
+        //         child: Container(
+        //           padding: EdgeInsets.symmetric(horizontal: 32.0),
+        //           height: 50.0,
+        //           child: Row(
+        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //             children: <Widget>[
+        //               Text(sortBy == 'highestprice'
+        //                   ? 'Highest Price'
+        //                   : sortBy == 'lowestprice' ? 'Lowest Price' : '${sortBy.substring(0, 1)[0].toUpperCase()}${sortBy.substring(1)}'),
+        //               isSelected ? Icon(Icons.check, color: Colors.green) : Container(),
+        //             ],
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   );
+        // }
 
-        Widget _buildSortBottomSheet() {
-          return FractionallySizedBox(
-              heightFactor: 0.42,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Container(
-                      height: 5.0,
-                      width: 48.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFCCCCCC),
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Sort', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                  _sortListTile(sortBy: 'relevance', isTopMost: true),
-                  _sortListTile(sortBy: 'newest'),
-                  _sortListTile(sortBy: 'oldest'),
-                  _sortListTile(sortBy: 'highestprice'),
-                  _sortListTile(sortBy: 'lowestprice'),
-                ],
-              ));
-        }
+        // Widget _buildSortBottomSheet() {
+        //   return FractionallySizedBox(
+        //       heightFactor: 0.42,
+        //       child: Column(
+        //         children: <Widget>[
+        //           Padding(
+        //             padding: EdgeInsets.only(top: 8.0),
+        //             child: Container(
+        //               height: 5.0,
+        //               width: 48.0,
+        //               decoration: BoxDecoration(
+        //                 color: Color(0xFFCCCCCC),
+        //                 borderRadius: BorderRadius.circular(50.0),
+        //               ),
+        //             ),
+        //           ),
+        //           Padding(
+        //             padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        //             child: Align(
+        //               alignment: Alignment.centerLeft,
+        //               child: Text('Sort', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+        //             ),
+        //           ),
+        //           _sortListTile(sortBy: 'relevance', isTopMost: true),
+        //           _sortListTile(sortBy: 'newest'),
+        //           _sortListTile(sortBy: 'oldest'),
+        //           _sortListTile(sortBy: 'highestprice'),
+        //           _sortListTile(sortBy: 'lowestprice'),
+        //         ],
+        //       ));
+        // }
 
         // Widget _buildFilterBottomSheet() {
         //   double _starValue = 10;

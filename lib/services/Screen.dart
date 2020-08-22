@@ -30,16 +30,14 @@ class CustomColor {
 }
 
 class CustomText {
-  final buttontext =
-      TextStyle(color: Colors.white, fontSize: Screen.blockX * 4);
+  final buttontext = TextStyle(color: Colors.white, fontSize: Screen.blockX * 4);
 }
 
 class Button extends StatelessWidget {
   final String action;
   final Function function;
   final double width;
-  const Button({Key key, this.action, this.function, this.width})
-      : super(key: key);
+  const Button({Key key, this.action, this.function, this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +61,7 @@ class CustomCard extends StatefulWidget {
   final Function function;
   final Function longpress;
   final bool state;
-  const CustomCard(
-      {Key key,
-      this.title,
-      this.icon,
-      this.function,
-      this.longpress,
-      this.subtitle,
-      this.state})
-      : super(key: key);
+  const CustomCard({Key key, this.title, this.icon, this.function, this.longpress, this.subtitle, this.state}) : super(key: key);
   @override
   CustomCardState createState() => CustomCardState();
 }
@@ -82,15 +72,12 @@ class CustomCardState extends State<CustomCard> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: widget.state == true
-            ? Colors.blue.withOpacity(0.5)
-            : CustomColor().primaryDark,
+        color: widget.state == true ? Colors.blue.withOpacity(0.5) : CustomColor().primaryDark,
       ),
       margin: EdgeInsets.only(top: 5, bottom: 5),
       child: ListTile(
         leading: widget.icon,
-        title: Text(widget.title,
-            style: TextStyle(fontSize: Screen.blockX * 6, color: Colors.white)),
+        title: Text(widget.title, style: TextStyle(fontSize: Screen.blockX * 6, color: Colors.white)),
         subtitle: Text(
           widget.subtitle,
           style: TextStyle(fontSize: Screen.blockX * 4, color: Colors.white),
@@ -107,33 +94,25 @@ class CustomButton extends StatelessWidget {
   final Function function;
   final Color fontColor;
   final double width;
-  const CustomButton(
-      {Key key,
-      this.color,
-      this.hint,
-      this.function,
-      this.fontColor,
-      this.width})
-      : super(key: key);
+  const CustomButton({Key key, this.color, this.hint, this.function, this.fontColor, this.width}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(5),
-          boxShadow: [
-            BoxShadow(
-              color: fontColor,
-              spreadRadius: 1,
-            )
-          ]),
+      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5), boxShadow: [
+        BoxShadow(
+          color: fontColor,
+          spreadRadius: 1,
+        )
+      ]),
       child: FlatButton(
         child: Text(
           hint,
           style: GoogleFonts.poppins(
-              color: fontColor, fontSize: Screen.blockX * 5),
+            color: fontColor,
+            // fontSize: Screen.blockX * 5,
+          ),
         ),
         onPressed: function,
       ),

@@ -385,14 +385,21 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
   }
 
   Widget _buildBody(BuildContext context, DashboardState state) {
-    return RefreshIndicator(
-      onRefresh: () {
-        BlocProvider.of<DashboardBloc>(context).add(
-          GetApiDashboardEvent(),
-        );
-        return _refreshCompleter.future;
-      },
-      child: _buildContent(context, state),
+    return Container(
+      color: Theme.Colors.turqoiseNormal,
+      child: SafeArea(
+        child: Scaffold(
+          body: RefreshIndicator(
+            onRefresh: () {
+              BlocProvider.of<DashboardBloc>(context).add(
+                GetApiDashboardEvent(),
+              );
+              return _refreshCompleter.future;
+            },
+            child: _buildContent(context, state),
+          ),
+        ),
+      ),
     );
   }
 

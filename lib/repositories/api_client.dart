@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:aman_liburan/services/user_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:aman_liburan/components/data_session.dart';
 import 'package:aman_liburan/models/param/api_param.dart';
@@ -12,8 +13,8 @@ class ApiClient {
   ApiClient._privateConstructor();
   factory ApiClient() => _instance;
 
-  static String baseUrl = 'https://go.2gaijin.com';
-  // static String baseUrl = 'http://aman-liburan.herokuapp.com';
+  // static String baseUrl = 'https://go.2gaijin.com';
+  static String baseUrl = 'http://aman-liburan.herokuapp.com';
 
   Future<http.Response> httpGetHelper(String path, String methodName) async {
     final authToken = await DataSession().getAuthToken();
@@ -28,7 +29,10 @@ class ApiClient {
       final GlobalResponse globalResponse = GlobalResponse.fromJson(json);
       if (globalResponse.message == 'Token Expired' || globalResponse.message == 'Unauthorized') {
         print('Auth token expired. Invoiking refresh token.');
-        await SigninRepository().postRefreshToken();
+        // await SigninRepository().postRefreshToken();
+        final email = await DataSession().getEmail();
+        final password = await DataSession().getPassword();
+        await UserServices().signIn(email, password);
         return httpGetHelper(path, methodName);
       }
       print('Response ==>');

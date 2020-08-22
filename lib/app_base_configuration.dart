@@ -1,16 +1,9 @@
 import 'package:aman_liburan/bottom_navigation_general_user.dart';
-import 'package:aman_liburan/bottom_navigation_government.dart';
-import 'package:aman_liburan/screens/account/account_page.dart';
-import 'package:aman_liburan/screens/add_product/add_product_1st_page.dart';
-import 'package:aman_liburan/screens/appointment/appointment_page.dart';
-import 'package:aman_liburan/screens/check_in/check_in_form_page.dart';
-import 'package:aman_liburan/screens/check_out/check_out_page.dart';
 import 'package:aman_liburan/screens/dashboard/dashboard_page.dart';
-import 'package:aman_liburan/screens/home/officer_home_page.dart';
+import 'package:aman_liburan/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/page.dart';
 
-import 'bottom_navigation_field_officer.dart';
 
 class AppBaseConfiguration extends StatefulWidget {
   final BottomPage page;
@@ -72,12 +65,12 @@ class _AppBaseConfigurationState extends State<AppBaseConfiguration> {
     return <BottomPage, WidgetBuilder>{
       // General User
       BottomPage.page_1: (_) => Dashboard(key: PageStorageKey(BottomPage.page_1)),
-      BottomPage.page_2: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
+      BottomPage.page_2: (_) => ProfilePage(key: PageStorageKey(BottomPage.page_2)),
       // // Government
-      // BottomPage.page_1: (_) => AddProduct1stPage(key: PageStorageKey(BottomPage.page_4), isEditProduct: false),
-      // BottomPage.page_2: (_) => Dashboard(key: PageStorageKey(BottomPage.page_1)),
+      // BottomPage.page_1: (_) => AddProduct1stPage(key: PageStorageKey(BottomPage.page_1), isEditProduct: false),
+      // BottomPage.page_2: (_) => Dashboard(key: PageStorageKey(BottomPage.page_2)),
       // BottomPage.page_3: (_) => AppointmentPage(key: PageStorageKey(BottomPage.page_3)),
-      // BottomPage.page_4: (_) => AccountPage(key: PageStorageKey(BottomPage.page_2)),
+      // BottomPage.page_4: (_) => AccountPage(key: PageStorageKey(BottomPage.page_4)),
       // // Field Officer
       // BottomPage.page_1: (_) => CheckInFormPage(key: PageStorageKey(BottomPage.page_1)),
       // BottomPage.page_2: (_) => OfficerHomePage(key: PageStorageKey(BottomPage.page_2)),

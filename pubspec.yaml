@@ -91,6 +91,7 @@ flutter:
     - assets/images/illustrations/
     - assets/languages/
     - assets/svg/
+    - images/
 
   fonts:
     - family: OpenSans

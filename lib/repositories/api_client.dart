@@ -13,6 +13,7 @@ class ApiClient {
   factory ApiClient() => _instance;
 
   static String baseUrl = 'https://go.2gaijin.com';
+  // static String baseUrl = 'http://aman-liburan.herokuapp.com';
 
   Future<http.Response> httpGetHelper(String path, String methodName) async {
     final authToken = await DataSession().getAuthToken();

@@ -4,11 +4,11 @@ import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
-class BottomNavigation extends StatefulWidget {
+class BottomNavigationFiledOfficer extends StatefulWidget {
   final BottomPage page;
   final ValueChanged<BottomPage> onSelectPage;
 
-  const BottomNavigation({Key key, this.page, this.onSelectPage}) : super(key: key);
+  const BottomNavigationFiledOfficer({Key key, this.page, this.onSelectPage}) : super(key: key);
   // static const Map<BottomPage, String> icons = {
   //   BottomPage.page_1: "assets/images/bottom_navigation/bx_bx-home-alt.png",
   //   BottomPage.page_2: "assets/images/bottom_navigation/ant-design_user-outlined.png",
@@ -46,10 +46,10 @@ class BottomNavigation extends StatefulWidget {
   };
 
   @override
-  _BottomNavigationState createState() => _BottomNavigationState();
+  _BottomNavigationFiledOfficerState createState() => _BottomNavigationFiledOfficerState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationFiledOfficerState extends State<BottomNavigationFiledOfficer> {
   bool _atHome = true;
 
   Color _color(BottomPage page) => this.widget.page == page ? Theme.Colors.turqoiseDark : Theme.Colors.turqoiseNormal;
@@ -67,13 +67,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              BottomNavigation.icons[bottomPage],
+              BottomNavigationFiledOfficer.icons[bottomPage],
               width: 24.0,
               height: 24.0,
               color: (widget.page == bottomPage) ? _color(bottomPage) : Theme.Colors.turqoiseNormal,
             ),
             Text(
-              BottomNavigation.names[bottomPage],
+              BottomNavigationFiledOfficer.names[bottomPage],
               style: TextStyle(
                 color: _color(bottomPage),
                 letterSpacing: 1,

@@ -22,8 +22,8 @@ class _SplahScreenState extends State<SplahScreen> {
         Navigator.of(context).pushReplacementNamed('/app-base-configuration');
         break;
       case AuthStatus.notSignedIn:
-        // Navigator.of(context).pushReplacementNamed('/login-page');
-        Navigator.of(context).pushReplacementNamed('/app-base-configuration');
+        Navigator.of(context).pushReplacementNamed('/login-page');
+        // Navigator.of(context).pushReplacementNamed('/app-base-configuration');
         break;
     }
   }

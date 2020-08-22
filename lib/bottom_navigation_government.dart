@@ -4,11 +4,11 @@ import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
-class BottomNavigation extends StatelessWidget {
+class BottomNavigationGovernment extends StatelessWidget {
   final BottomPage page;
   final ValueChanged<BottomPage> onSelectPage;
 
-  const BottomNavigation({Key key, this.page, this.onSelectPage}) : super(key: key);
+  const BottomNavigationGovernment({Key key, this.page, this.onSelectPage}) : super(key: key);
 
   Color _color(BottomPage page) => this.page == page ? Theme.Colors.turqoiseDark : Theme.Colors.turqoiseNormal;
 

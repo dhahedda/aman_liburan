@@ -162,18 +162,18 @@ class _AddProduct1stPageState extends State<AddProduct1stPage> {
           }
 
           if (state is AddProductFetched) {
-            if (state.response.data.profile != null && !state.response.data.profile.isSubscribed) {
-              DataSession().setAddProductStatus(true);
-              // Future.delayed(Duration.zero, () { Navigator. ... }); is a workarround for error...
-              // ...Failed assertion: line 3364 pos 12: '!_debugLocked': is not true.)
-              // https://stackoverflow.com/questions/58027568/another-exception-was-thrown-packageflutter-src-widgets-navigator-dart-fail
-              Future.delayed(Duration.zero, () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => AppBaseConfiguration(
-                          page: BottomPage.page_4,
-                        )));
-              });
-            }
+            // if (state.response.data.profile != null && !state.response.data.profile.isSubscribed) {
+            //   DataSession().setAddProductStatus(true);
+            //   // Future.delayed(Duration.zero, () { Navigator. ... }); is a workarround for error...
+            //   // ...Failed assertion: line 3364 pos 12: '!_debugLocked': is not true.)
+            //   // https://stackoverflow.com/questions/58027568/another-exception-was-thrown-packageflutter-src-widgets-navigator-dart-fail
+            //   Future.delayed(Duration.zero, () {
+            //     Navigator.of(context).pushReplacement(MaterialPageRoute(
+            //         builder: (context) => AppBaseConfiguration(
+            //               page: BottomPage.page_4,
+            //             )));
+            //   });
+            // }
             return DefaultTabController(
               length: 2,
               child: Scaffold(

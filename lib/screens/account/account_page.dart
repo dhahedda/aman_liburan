@@ -541,8 +541,8 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                     child: Image.asset(
                       "assets/images/bottom_navigation/aman_liburan.png",
-                      width: 24,
-                      height: 24,
+                      width: 24.0,
+                      height: 24.0,
                     ),
                   ),
                 ),

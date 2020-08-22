@@ -1,40 +1,56 @@
 import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/utilities/size_config.dart';
+import 'package:aman_liburan/views/login_page.dart';
+import 'package:aman_liburan/views/register_page.dart';
 import 'package:aman_liburan/views/update_profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:aman_liburan/components/data_session.dart';
 
-import 'login_page.dart';
-import 'register_page.dart';
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key key}) : super(key: key);
 
-class Profile extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: CustomColor().primary,
-      child: SafeArea(
-        child: Scaffold(backgroundColor: Colors.white, body: _UserProfile()),
-      ),
-    );
-  }
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _UserProfile extends StatelessWidget {
-  bool login = false;
+class _ProfilePageState extends State<ProfilePage> {
+  bool _isLogin = false;
+  String _email = '';
+
+  Future<void> _initLoginStatus() async {
+    print('Getting login status...');
+    _isLogin = await DataSession().getStatusLogin();
+    _email = await DataSession().getEmail();
+    setState(() {});
+    print('Done');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initLoginStatus();
+  }
+
   Widget _decoration() {
     return Stack(
       children: [
         Container(
-          width: Screen.x,
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/img_rec.svg',
             fit: BoxFit.fill,
           ),
         ),
         Container(
-          width: Screen.x,
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/img_bg_profile.svg',
             fit: BoxFit.fill,
@@ -60,13 +76,13 @@ class _UserProfile extends StatelessWidget {
                 child: Icon(
                   Icons.person_pin,
                   color: Colors.white,
-                  size: Screen.blockX * 25,
+                  size: SizeConfig.getWidth(context) / 100 * 25,
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Container(
-                  margin: EdgeInsets.only(top: Screen.blockY * 2),
+                  margin: EdgeInsets.only(top: SizeConfig.getHeight(context) / 100 * 2),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,15 +91,21 @@ class _UserProfile extends StatelessWidget {
                         color: Colors.white,
                         fontColor: CustomColor().primary,
                         hint: 'LOGIN',
-                        width: Screen.blockX * 30,
-                        function: () => Get.to(LoginPage()),
+                        width: SizeConfig.getWidth(context) / 100 * 30,
+                        function: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        ),
                       ),
                       CustomButton(
                         color: CustomColor().primary,
                         fontColor: Colors.white,
                         hint: 'DAFTAR',
-                        width: Screen.blockX * 30,
-                        function: () => Get.to(RegisterPage()),
+                        width: SizeConfig.getWidth(context) / 100 * 30,
+                        function: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterPage()),
+                        ),
                       )
                     ],
                   ),
@@ -108,15 +130,11 @@ class _UserProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                flex: 1,
-                child: Container(),
-              ),
-              Expanded(
                 flex: 4,
                 child: Icon(
                   Icons.person_pin,
                   color: Colors.white,
-                  size: Screen.blockX * 25,
+                  size: SizeConfig.getWidth(context) / 100 * 25,
                 ),
               ),
               Expanded(
@@ -126,20 +144,16 @@ class _UserProfile extends StatelessWidget {
                     children: [
                       Text(
                         'Abang Tukang Bakso (L)',
-                        style: GoogleFonts.poppins(fontSize: Screen.blockX * 5),
+                        style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                       ),
                       Text(
                         'Wisatawan',
-                        style: GoogleFonts.poppins(fontSize: Screen.blockX * 4),
+                        style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 4),
                       ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Container(),
-              )
             ],
           ),
         )
@@ -153,12 +167,15 @@ class _UserProfile extends StatelessWidget {
       children: [
         Text(
           'EMAIL',
-          style: GoogleFonts.poppins(
-              color: Colors.black, fontSize: Screen.blockX * 3),
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: SizeConfig.getWidth(context) / 100 * 3),
         ),
-        Text('baksobelumnikah@gmail.com',
-            style: GoogleFonts.poppins(
-                color: Colors.black, fontSize: Screen.blockX * 4))
+        Text(
+          _email,
+          style: GoogleFonts.poppins(
+            color: Colors.black,
+            fontSize: SizeConfig.getWidth(context) / 100 * 4,
+          ),
+        )
       ],
     );
   }
@@ -169,12 +186,12 @@ class _UserProfile extends StatelessWidget {
       children: [
         Text(
           hint,
-          style: GoogleFonts.poppins(
-              color: Colors.black, fontSize: Screen.blockX * 3),
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: SizeConfig.getWidth(context) / 100 * 3),
         ),
-        Text(value,
-            style: GoogleFonts.poppins(
-                color: Colors.black, fontSize: Screen.blockX * 4))
+        Text(
+          value,
+          style: GoogleFonts.poppins(color: Colors.black, fontSize: SizeConfig.getWidth(context) / 100 * 4),
+        )
       ],
     );
   }
@@ -182,9 +199,9 @@ class _UserProfile extends StatelessWidget {
   Widget _userInfoDetail() {
     return Row(
       children: [
-        Expanded(flex: 1, child: _userInfoDetailFunc('USERNAME', '@baksobm')),
-        Expanded(flex: 1, child: _userInfoDetailFunc('DOMISILI', 'Bandung')),
-        Expanded(flex: 1, child: _userInfoDetailFunc('USIA', '25 Tahun')),
+        Expanded(child: _userInfoDetailFunc('USERNAME', '@baksobm')),
+        Expanded(child: _userInfoDetailFunc('DOMISILI', 'Bandung')),
+        Expanded(child: _userInfoDetailFunc('USIA', '25 Tahun')),
       ],
     );
   }
@@ -193,27 +210,27 @@ class _UserProfile extends StatelessWidget {
     return CustomButton(
       color: CustomColor().primary,
       fontColor: Colors.white,
-      width: Screen.blockX * 80,
+      width: SizeConfig.getWidth(context) / 100 * 80,
       hint: 'UBAH PROFIL',
-      function: () => Get.to(UpdateProfile()),
+      function: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => UpdateProfile()),
+      ),
     );
   }
 
   Widget _userInfo() {
     return Container(
-      margin: EdgeInsets.only(top: Screen.blockY * 1),
-      padding: EdgeInsets.all(Screen.blockX * 3),
-      width: Screen.blockX * 90,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 5)]),
+      margin: EdgeInsets.only(top: SizeConfig.getHeight(context) / 100 * 1),
+      padding: EdgeInsets.all(SizeConfig.getWidth(context) / 100 * 3),
+      width: SizeConfig.getWidth(context) / 100 * 90,
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 5)]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(flex: 1, child: _userInfoEmail()),
-          Expanded(flex: 1, child: _userInfoDetail()),
-          Expanded(flex: 1, child: _userInfoButton()),
+          Expanded(child: _userInfoEmail()),
+          Expanded(child: _userInfoDetail()),
+          Expanded(child: _userInfoButton()),
         ],
       ),
     );
@@ -221,62 +238,53 @@ class _UserProfile extends StatelessWidget {
 
   Widget _lastVisit() {
     return Container(
-      margin: EdgeInsets.all(Screen.blockY * 2),
+      margin: EdgeInsets.symmetric(horizontal: SizeConfig.getHeight(context) / 100 * 2, vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            'Kunjungan terakhir',
+            style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 4),
+          ),
           Expanded(
-              flex: 1,
-              child: Text(
-                'Kunjungan terakhir',
-                style: GoogleFonts.poppins(fontSize: Screen.blockX * 4),
-              )),
-          Expanded(
-            flex: 2,
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 3,
-                        blurRadius: 3)
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 3,
+                    blurRadius: 3,
+                  ),
+                ],
+              ),
               child: Row(
                 children: [
                   Expanded(
-                      flex: 2,
                       child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomLeft: Radius.circular(10)),
-                            image: DecorationImage(
-                                image: AssetImage('images/grojogan-sewu.jpg'),
-                                fit: BoxFit.fill)),
-                      )),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                        image: DecorationImage(image: AssetImage('images/grojogan-sewu.jpg'), fit: BoxFit.fill)),
+                  )),
                   Expanded(
-                    flex: 6,
+                    flex: 3,
                     child: Container(
-                      margin: EdgeInsets.only(left: Screen.blockX * 5),
+                      margin: EdgeInsets.only(left: SizeConfig.getWidth(context) / 100 * 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             '12 Januari 2020',
-                            style: GoogleFonts.poppins(
-                                fontSize: Screen.blockX * 3),
+                            style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 3),
                           ),
                           Text(
                             'Grojogan Sewu',
-                            style: GoogleFonts.poppins(
-                                fontSize: Screen.blockX * 5),
+                            style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                           ),
                           Text(
                             '5 orang',
-                            style: GoogleFonts.poppins(
-                                fontSize: Screen.blockX * 3),
+                            style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 3),
                           )
                         ],
                       ),
@@ -304,12 +312,11 @@ class _UserProfile extends StatelessWidget {
             icon: Icon(
               Icons.exit_to_app,
               color: Colors.red,
-              size: Screen.blockX * 10,
+              size: SizeConfig.getWidth(context) / 100 * 10,
             ),
             label: Text(
               'Logout',
-              style: GoogleFonts.poppins(
-                  color: Colors.red, fontSize: Screen.blockX * 5),
+              style: GoogleFonts.poppins(color: Colors.red, fontSize: SizeConfig.getWidth(context) / 100 * 5),
             ),
             onPressed: null,
           ),
@@ -320,7 +327,6 @@ class _UserProfile extends StatelessWidget {
 
   Widget _bottomDecorationNotLogin() {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(
           flex: 2,
@@ -331,34 +337,45 @@ class _UserProfile extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                flex: 1,
-                child: Container(),
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Text('Tetap pakai masker dan jaga jarak, ya.', style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5)),
               ),
-              Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(5),
-                      child: Text('Tetap pakai masker dan jaga jarak, ya.',
-                          style:
-                              GoogleFonts.poppins(fontSize: Screen.blockX * 5)),
-                    ),
-                    CustomButton(
-                      color: CustomColor().primary,
-                      fontColor: Colors.white,
-                      function: null,
-                      width: Screen.blockX * 50,
-                      hint: 'TENTANG KAMI',
-                    ),
-                  ],
-                ),
-              )
+              CustomButton(
+                color: CustomColor().primary,
+                fontColor: Colors.white,
+                function: null,
+                width: SizeConfig.getWidth(context) / 100 * 50,
+                hint: 'TENTANG KAMI',
+              ),
             ],
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildBody() {
+    return Column(
+      children: [
+        Expanded(
+          child: Stack(
+            children: [
+              _decoration(),
+              _isLogin ? _userLogin() : _userNotLogin(),
+            ],
+          ),
+        ),
+        Expanded(
+          child: _isLogin ? _userInfo() : Container(),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 64.0),
+            child: _isLogin ? _bottomDecorationLogin() : _bottomDecorationNotLogin(),
           ),
         )
       ],
@@ -367,29 +384,11 @@ class _UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Screen().init(context);
-    return Column(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Stack(
-            children: [
-              _decoration(),
-              login == true ? _userLogin() : _userNotLogin()
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: login == true ? _userInfo() : Container(),
-        ),
-        Expanded(
-          flex: 1,
-          child: login == true
-              ? _bottomDecorationLogin()
-              : _bottomDecorationNotLogin(),
-        )
-      ],
+  return Container(
+      color: CustomColor().primary,
+      child: SafeArea(
+        child: Scaffold(backgroundColor: Colors.white, body: _buildBody()),
+      ),
     );
   }
 }

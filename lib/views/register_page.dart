@@ -1,4 +1,5 @@
 import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,23 +33,23 @@ class _RegisterPage extends State<RegisterPage> {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.only(top: Screen.blockY * 10),
-          width: Screen.x,
+          margin: EdgeInsets.only(top: SizeConfig.getHeight(context) / 100 * 10),
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/waves_blue.svg',
             fit: BoxFit.fill,
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: Screen.blockY * 10),
-          width: Screen.x,
+          margin: EdgeInsets.only(top: SizeConfig.getHeight(context) / 100 * 10),
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/waves_green.svg',
             fit: BoxFit.fill,
           ),
         ),
         Container(
-          width: Screen.blockX * 25,
+          width: SizeConfig.getWidth(context) / 100 * 25,
           child: Image.asset('images/ic.png'),
         ),
       ],
@@ -62,8 +63,8 @@ class _RegisterPage extends State<RegisterPage> {
     ]);
     bool isClicked = false;
     return Container(
-        width: Screen.blockX * 80,
-        height: Screen.blockY * 10,
+        width: SizeConfig.getWidth(context) / 100 * 80,
+        height: SizeConfig.getHeight(context) / 100 * 10,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -73,7 +74,7 @@ class _RegisterPage extends State<RegisterPage> {
                     child: Text(
                       hint,
                       style: GoogleFonts.poppins(
-                          fontSize: Screen.blockX * 4, color: Colors.grey),
+                          fontSize: SizeConfig.getWidth(context) / 100 * 4, color: Colors.grey),
                     ))
                 : Container(),
             Flexible(
@@ -81,7 +82,7 @@ class _RegisterPage extends State<RegisterPage> {
               child: TextFormField(
                 obscureText: hint == "Kata sandi" ? true : false,
                 controller: controller,
-                style: GoogleFonts.poppins(fontSize: Screen.blockX * 5),
+                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                 validator: formValidator,
                 onTap: () {
                   setState(() {
@@ -109,7 +110,7 @@ class _RegisterPage extends State<RegisterPage> {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.only(top: Screen.blockY * 20),
+          margin: EdgeInsets.only(top: SizeConfig.getHeight(context) / 100 * 20),
           height: Screen.y,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -127,7 +128,7 @@ class _RegisterPage extends State<RegisterPage> {
                         style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: Screen.blockX * 6),
+                            fontSize: SizeConfig.getWidth(context) / 100 * 6),
                       ),
                       _textField('Nama Lengkap', _fullname),
                       _textField('Username', _user),
@@ -138,13 +139,13 @@ class _RegisterPage extends State<RegisterPage> {
                         fontColor: Colors.white,
                         function: () => print('register'),
                         hint: 'REGISTER',
-                        width: Screen.blockX * 80,
+                        width: SizeConfig.getWidth(context) / 100 * 80,
                       ),
                       RichText(
                         text: TextSpan(
                           text: '\nSudah punya akun? ',
                           style: GoogleFonts.poppins(
-                              color: Colors.grey, fontSize: Screen.blockX * 5),
+                              color: Colors.grey, fontSize: SizeConfig.getWidth(context) / 100 * 5),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Login',

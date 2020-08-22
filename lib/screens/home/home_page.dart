@@ -1,16 +1,16 @@
 import 'dart:async';
 
+import 'package:aman_liburan/blocs/home/home_bloc.dart';
+import 'package:aman_liburan/screens/dashboard/dashboard_page_category_grid_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:aman_liburan/page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aman_liburan/screens/dashboard/dashboard_page_category_grid_item.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/screens/search/search_page.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
-import 'package:aman_liburan/blocs/dashboard/dashboard_bloc.dart';
 import 'package:aman_liburan/utilities/widgets/custom_sliver_page_header.dart';
 import 'package:aman_liburan/utilities/widgets/illustration_loading.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
@@ -19,17 +19,17 @@ class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => BlocProvider<DashboardBloc>(create: (context) => DashboardBloc()..add(GetApiDashboardEvent()), child: DashboardScreen());
+  Widget build(BuildContext context) => BlocProvider<HomeBloc>(create: (context) => HomeBloc()..add(GetApiHomeEvent()), child: HomeScreen());
 }
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
-  _DashboardState createState() => _DashboardState();
+  _HomeState createState() => _HomeState();
 }
 
-class _DashboardState extends State<DashboardScreen> with SingleTickerProviderStateMixin {
+class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
 
   Completer<void> _refreshCompleter;
@@ -135,7 +135,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildAppBarHeaderText(BuildContext context, DashboardState state) {
+  Widget _buildAppBarHeaderText(BuildContext context, HomeState state) {
     return AnimatedOpacity(
       opacity: isShrink ? 0.8 : 1.0,
       duration: Duration(milliseconds: 500),
@@ -180,7 +180,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildAppBarSearchInput(BuildContext context, DashboardState state) {
+  Widget _buildAppBarSearchInput(BuildContext context, HomeState state) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
@@ -219,7 +219,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildSvg(BuildContext context, DashboardState state) {
+  Widget _buildSvg(BuildContext context, HomeState state) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: SvgPicture.asset(
@@ -230,7 +230,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildAppBarHeader(BuildContext context, DashboardState state) {
+  Widget _buildAppBarHeader(BuildContext context, HomeState state) {
     return SliverToBoxAdapter(
       child: Container(
         color: Theme.Colors.turqoiseNormal,
@@ -248,7 +248,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildFilterProductChips(BuildContext context, DashboardState state) {
+  Widget _buildFilterProductChips(BuildContext context, HomeState state) {
     List<String> filter = [
       "Semua Wisata",
       "Wisata Air",
@@ -305,7 +305,7 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildAppBarContent(BuildContext context, DashboardState state) {
+  Widget _buildAppBarContent(BuildContext context, HomeState state) {
     return SliverPersistentHeader(
       delegate: CustomSliverPageHeader(
         minHeight: 120,
@@ -349,9 +349,9 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
 
   Widget _buildTabBarPresistentContent(
     BuildContext context,
-    DashboardState state,
+    HomeState state,
   ) {
-    List<CategoriesResponse> listCategories = (state as OnDashboardResponse).response.data.categories;
+    List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
 
     return Container(
       height: SizeConfig.getHeight(context),
@@ -365,8 +365,8 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildContent(BuildContext context, DashboardState state) {
-    List<CategoriesResponse> listCategories = (state as OnDashboardResponse).response.data.categories;
+  Widget _buildContent(BuildContext context, HomeState state) {
+    List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
 
     return SafeArea(
       child: DefaultTabController(
@@ -386,19 +386,20 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
     );
   }
 
-  Widget _buildBody(BuildContext context, DashboardState state) {
+  Widget _buildBody(BuildContext context, HomeState state) {
     return Container(
       color: Theme.Colors.turqoiseNormal,
       child: SafeArea(
         child: Scaffold(
           body: RefreshIndicator(
             onRefresh: () {
-              BlocProvider.of<DashboardBloc>(context).add(
-                GetApiDashboardEvent(),
+              BlocProvider.of<HomeBloc>(context).add(
+                GetApiHomeEvent(),
               );
               return _refreshCompleter.future;
             },
-            child: _buildContent(context, state),
+            child: Container(),
+            // child: _buildContent(context, state),
           ),
         ),
       ),
@@ -407,23 +408,23 @@ class _DashboardState extends State<DashboardScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DashboardBloc, DashboardState>(
-      listener: (BuildContext context, DashboardState state) {
-        if (state is OnDashboardResponse) {
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: (BuildContext context, HomeState state) {
+        if (state is OnHomeResponse) {
           _refreshCompleter?.complete();
           _refreshCompleter = Completer();
         }
       },
-      builder: (BuildContext context, DashboardState state) {
-        if (state is OnDashboardLoading) {
+      builder: (BuildContext context, HomeState state) {
+        if (state is OnHomeLoading) {
           return IllustrationLoading();
-        } else if (state is OnDashboardResponse) {
-          if (state.response.status == "Success") {
+        } else if (state is OnHomeResponse) {
+          if (state.response != null) {
             return _buildBody(context, state);
           } else {
             return _buildError(context, state.response.message);
           }
-        } else if (state is OnDashboardError) {
+        } else if (state is OnHomeError) {
           return _buildError(context, state.message);
         }
         return IllustrationLoading();

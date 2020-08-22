@@ -18,6 +18,7 @@ class ApiClient {
 
   Future<http.Response> httpGetHelper(String path, String methodName) async {
     final authToken = await DataSession().getAuthToken();
+    // print(authToken);
     Map<String, String> headers = {
       'Accept': '*/*',
       'Content-type': 'application/json',

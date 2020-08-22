@@ -1,5 +1,6 @@
 import 'package:aman_liburan/bottom_navigation_general_user.dart';
 import 'package:aman_liburan/screens/dashboard/dashboard_page.dart';
+import 'package:aman_liburan/screens/home/home_page.dart';
 import 'package:aman_liburan/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/page.dart';
@@ -64,7 +65,7 @@ class _AppBaseConfigurationState extends State<AppBaseConfiguration> {
   Widget _buildBody() {
     return <BottomPage, WidgetBuilder>{
       // General User
-      BottomPage.page_1: (_) => Dashboard(key: PageStorageKey(BottomPage.page_1)),
+      BottomPage.page_1: (_) => HomePage(key: PageStorageKey(BottomPage.page_1)),
       BottomPage.page_2: (_) => ProfilePage(key: PageStorageKey(BottomPage.page_2)),
       // // Government
       // BottomPage.page_1: (_) => AddProduct1stPage(key: PageStorageKey(BottomPage.page_1), isEditProduct: false),

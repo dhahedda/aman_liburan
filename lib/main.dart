@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aman_liburan/views/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -72,7 +73,8 @@ class NiGaijin extends StatelessWidget {
         // Routing Configuration
         // TODO update routes
         // TODO allow location permission transition is not smooth
-        '/login-page': (BuildContext context) => SigninPage(),
+        '/signin-page': (BuildContext context) => SigninPage(),
+        '/login-page': (BuildContext context) => LoginPage(),
         '/app-base-configuration': (BuildContext context) => AppBaseConfiguration(),
         '/account-page': (BuildContext context) => AccountPage(),
         '/search-page': (BuildContext context) => SearchPage(),

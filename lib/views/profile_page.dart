@@ -1,10 +1,13 @@
+import 'package:aman_liburan/blocs/profile/profile_bloc.dart';
 import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/services/user_service.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/views/login_page.dart';
 import 'package:aman_liburan/views/register_page.dart';
 import 'package:aman_liburan/views/update_profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:aman_liburan/components/data_session.dart';
@@ -318,7 +321,12 @@ class _ProfilePageState extends State<ProfilePage> {
               'Logout',
               style: GoogleFonts.poppins(color: Colors.red, fontSize: SizeConfig.getWidth(context) / 100 * 5),
             ),
-            onPressed: null,
+            onPressed: () async {
+              bool logoutSuccess = await UserServices().signOut();
+              if (logoutSuccess) {
+                Navigator.of(context).pushReplacementNamed('/login-page');
+              }
+            },
           ),
         )
       ],
@@ -384,10 +392,23 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-  return Container(
-      color: CustomColor().primary,
-      child: SafeArea(
-        child: Scaffold(backgroundColor: Colors.white, body: _buildBody()),
+    return BlocProvider<ProfileBloc>(
+      create: (context) => ProfileBloc()..add(GetProfileEvent()),
+      child: BlocConsumer<ProfileBloc, ProfileState>(
+        listener: (context, state) {
+          if (state is ProfileResponse) {
+            print('state.response');
+            print(state.response);
+          }
+        },
+        builder: (context, state) {
+          return Container(
+            color: CustomColor().primary,
+            child: SafeArea(
+              child: Scaffold(backgroundColor: Colors.white, body: _buildBody()),
+            ),
+          );
+        },
       ),
     );
   }

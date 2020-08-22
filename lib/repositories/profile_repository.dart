@@ -5,30 +5,30 @@ import 'package:aman_liburan/models/param/api_param.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/repositories/api_client.dart';
 
-class ProfileRepository{
+class ProfileRepository {
   Future<dynamic> getProfile({@required EmptyParam params}) async {
     try {
-      final response = await ApiClient().httpPostHelper('/profile', params.toJson(), 'API Profile');
+      String pathUrl = '/profile';
+      final response = await ApiClient().httpGetHelper(pathUrl, 'getProfile');
       final utf8Body = utf8.decode(response.body.runes.toList());
       final json = jsonDecode(utf8Body);
       return json;
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
-      return GlobalResponse.withError("$error");
+      String errorMessage = "Exception occured: ${error.toString()} stackTrace: ${stacktrace.toString()}";
+      print(errorMessage);
+      return GlobalResponse.withError(errorMessage);
     }
   }
 
   // Future<GlobalResponse> getSellerProfileProfile({@required ProfileSellerParam params}) async {
   //   try {
-  //     String pathUrl = '/profile_visitor?user_id='+params.userId;
-  //     final http.Response response =
-  //         await ApiClient().httpGetHelper(pathUrl, 'getProfileVisitor');
+  //     String pathUrl = '/profile_visitor?user_id=' + params.userId;
+  //     final http.Response response = await ApiClient().httpGetHelper(pathUrl, 'getProfileVisitor');
   //     final utf8Body = utf8.decode(response.body.runes.toList());
   //     final json = jsonDecode(utf8Body);
   //     return GlobalResponse.fromJson(json);
   //   } catch (error, stacktrace) {
-  //     String errorMessage =
-  //         "Exception occured: ${error.toString()} stackTrace: ${stacktrace.toString()}";
+  //     String errorMessage = "Exception occured: ${error.toString()} stackTrace: ${stacktrace.toString()}";
   //     print(errorMessage);
   //     return GlobalResponse.withError(errorMessage);
   //   }

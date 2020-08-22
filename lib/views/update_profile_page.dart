@@ -1,4 +1,5 @@
 import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -29,11 +30,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   Widget _titleUserProfile() {
     return SizedBox(
-      width: Screen.blockX * 80,
+      width: SizeConfig.getWidth(context) / 100 * 80,
       child: Text('DATA DIRI',
           textAlign: TextAlign.left,
           style: GoogleFonts.poppins(
-              fontSize: Screen.blockX * 3.5, color: Colors.black)),
+              fontSize: SizeConfig.getWidth(context) / 100 * 3.5, color: Colors.black)),
     );
   }
 
@@ -45,12 +46,12 @@ class _UpdateProfileState extends State<UpdateProfile> {
           Container(
             child: Icon(
               Icons.camera_alt,
-              size: Screen.blockX * 25,
+              size: SizeConfig.getWidth(context) / 100 * 25,
               color: Colors.grey,
             ),
           ),
           Text('Ubah foto',
-              style: GoogleFonts.poppins(fontSize: Screen.blockX * 4)),
+              style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 4)),
         ],
       ),
     );
@@ -65,7 +66,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   Widget _selectGender() {
     return Container(
-      width: Screen.blockX * 80,
+      width: SizeConfig.getWidth(context) / 100 * 80,
       child: Row(
         children: [
           Row(
@@ -82,7 +83,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               ),
               Text(
                 'Laki-laki',
-                style: GoogleFonts.poppins(fontSize: Screen.blockX * 5),
+                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
               )
             ],
           ),
@@ -100,7 +101,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               ),
               Text(
                 'Perempuan',
-                style: GoogleFonts.poppins(fontSize: Screen.blockX * 5),
+                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
               )
             ],
           )
@@ -132,11 +133,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   Widget _titlePassword() {
     return SizedBox(
-      width: Screen.blockX * 80,
+      width: SizeConfig.getWidth(context) / 100 * 80,
       child: Text('\nPASSWORD',
           textAlign: TextAlign.left,
           style: GoogleFonts.poppins(
-              fontSize: Screen.blockX * 3.5, color: Colors.black)),
+              fontSize: SizeConfig.getWidth(context) / 100 * 3.5, color: Colors.black)),
     );
   }
 
@@ -158,7 +159,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return CustomButton(
       color: CustomColor().primary,
       fontColor: Colors.white,
-      width: Screen.blockX * 80,
+      width: SizeConfig.getWidth(context) / 100 * 80,
       hint: 'SIMPAN DATA',
       function: null,
     );
@@ -217,8 +218,8 @@ class __textFieldState extends State<_textField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Screen.blockX * 80,
-        height: Screen.blockY * 10,
+        width: SizeConfig.getWidth(context) / 100 * 80,
+        height: SizeConfig.getHeight(context) / 100 * 10,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -228,7 +229,7 @@ class __textFieldState extends State<_textField> {
                     child: Text(
                       widget.hint,
                       style: GoogleFonts.poppins(
-                          fontSize: Screen.blockX * 4, color: Colors.grey),
+                          fontSize: SizeConfig.getWidth(context) / 100 * 4, color: Colors.grey),
                     ))
                 : Container(),
             Flexible(
@@ -236,7 +237,7 @@ class __textFieldState extends State<_textField> {
               child: TextFormField(
                 obscureText: widget.hint == "Kata sandi" ? true : false,
                 controller: widget.controller,
-                style: GoogleFonts.poppins(fontSize: Screen.blockX * 5),
+                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                 validator: formValidator,
                 onTap: () {
                   setState(() {

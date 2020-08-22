@@ -1,14 +1,11 @@
 import 'package:aman_liburan/services/consume_api.dart';
 import 'package:aman_liburan/services/screen.dart';
 import 'package:aman_liburan/services/user_service.dart';
+import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-TextEditingController _password = TextEditingController();
-TextEditingController _user = TextEditingController();
 
 class LoginPage extends StatefulWidget {
   @override
@@ -17,10 +14,14 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   static const route = '/login';
+
+  final TextEditingController _emailController = TextEditingController(text: 'visitor@gmail.com');
+  final TextEditingController _passwordController = TextEditingController(text: 'password');
+
   final _formKey = GlobalKey<FormState>();
   void dispose() {
-    _password.clear();
-    _user.clear();
+    _emailController.clear();
+    _passwordController.clear();
     super.dispose();
   }
 
@@ -28,24 +29,24 @@ class LoginPageState extends State<LoginPage> {
     return Stack(
       children: [
         Positioned(
-          top: Screen.blockY * 0,
-          left: Screen.blockX * 0,
-          width: Screen.blockX * 30,
+          top: 0.0,
+          left: 0.0,
+          width: SizeConfig.getWidth(context) / 100 * 30,
           child: Image.asset('images/ic.png'),
         ),
         Positioned(
-          top: Screen.blockY * 25,
+          top: SizeConfig.getHeight(context) / 100 * 25,
           left: 0,
-          width: Screen.x,
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/waves_blue.svg',
             fit: BoxFit.fill,
           ),
         ),
         Positioned(
-          top: Screen.blockY * 25,
+          top: SizeConfig.getHeight(context) / 100 * 25,
           left: 0,
-          width: Screen.x,
+          width: SizeConfig.getWidth(context),
           child: SvgPicture.asset(
             'images/waves_green.svg',
             fit: BoxFit.fill,
@@ -62,15 +63,10 @@ class LoginPageState extends State<LoginPage> {
     ]);
     return TextFormField(
       obscureText: hint == "Kata sandi" ? true : false,
-      controller: hint == "Kata sandi" ? _password : _user,
+      controller: hint == "Kata sandi" ? _passwordController : _emailController,
       style: TextStyle(color: Colors.black87),
       validator: formValidator,
-      decoration: InputDecoration(
-          hintText: hint,
-          hoverColor: Colors.white,
-          hintStyle: GoogleFonts.poppins(color: Colors.grey),
-          fillColor: Colors.white,
-          focusColor: Colors.white),
+      decoration: InputDecoration(hintText: hint, hoverColor: Colors.white, hintStyle: GoogleFonts.poppins(color: Colors.grey), fillColor: Colors.white, focusColor: Colors.white),
     );
   }
 
@@ -78,21 +74,17 @@ class LoginPageState extends State<LoginPage> {
     return Stack(
       children: [
         Positioned(
-          top: Screen.blockY * 35,
-          width: Screen.blockX * 100,
-          height: Screen.blockY * 65,
+          top: SizeConfig.getHeight(context) / 100 * 35,
+          width: SizeConfig.getWidth(context) / 100 * 100,
+          height: SizeConfig.getHeight(context) / 100 * 65,
           child: Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20))),
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
             child: Stack(
               children: [
                 Positioned(
                     top: 0,
-                    left: Screen.blockX * 10,
-                    width: Screen.blockX * 80,
+                    left: SizeConfig.getWidth(context) / 100 * 10,
+                    width: SizeConfig.getWidth(context) / 100 * 80,
                     child: Form(
                         key: _formKey,
                         child: Column(
@@ -101,10 +93,7 @@ class LoginPageState extends State<LoginPage> {
                             Text(
                               '\nLogin',
                               textAlign: TextAlign.start,
-                              style: GoogleFonts.poppins(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: Screen.blockX * 6),
+                              style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold, fontSize: SizeConfig.getWidth(context) / 100 * 6),
                             ),
                             _textField("Email"),
                             _textField("Kata sandi"),
@@ -112,23 +101,26 @@ class LoginPageState extends State<LoginPage> {
                             CustomButton(
                               color: CustomColor().primary,
                               fontColor: Colors.white,
-                              function: () => UserServices()
-                                  .signIn(_user.text, _password.text),
+                              function: () async {
+                                bool loginSuccess = await UserServices().signIn(_emailController.text, _passwordController.text);
+                                if (loginSuccess) {
+                                  Navigator.of(context).pushReplacementNamed('/app-base-configuration');
+                                }
+                              },
                               hint: 'LOGIN',
-                              width: Screen.blockX * 80,
+                              width: SizeConfig.getWidth(context) / 100 * 80,
                             ),
                             CustomButton(
                               color: Colors.white,
                               fontColor: CustomColor().primary,
                               function: () => ConsumeApi().tes(),
                               hint: 'REGISTER',
-                              width: Screen.blockX * 80,
+                              width: SizeConfig.getWidth(context) / 100 * 80,
                             ),
                             FlatButton(
                               child: Text(
                                 'Lupa password?',
-                                style: GoogleFonts.poppins(
-                                    fontSize: Screen.blockX * 5),
+                                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                               ),
                               onPressed: null,
                             )

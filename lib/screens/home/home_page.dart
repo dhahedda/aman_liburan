@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:aman_liburan/blocs/home/home_bloc.dart';
-import 'package:aman_liburan/screens/dashboard/dashboard_page_category_grid_item.dart';
+import 'package:aman_liburan/screens/home/dashboard_page_category_grid_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:aman_liburan/page.dart';

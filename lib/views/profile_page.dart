@@ -1,5 +1,5 @@
 import 'package:aman_liburan/blocs/profile/profile_bloc.dart';
-import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/services/Screen.dart';
 import 'package:aman_liburan/services/user_service.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/views/login_page.dart';

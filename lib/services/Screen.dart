@@ -91,10 +91,11 @@ class CustomCardState extends State<CustomCard> {
 class CustomButton extends StatelessWidget {
   final Color color;
   final String hint;
+  final Widget child;
   final Function function;
   final Color fontColor;
   final double width;
-  const CustomButton({Key key, this.color, this.hint, this.function, this.fontColor, this.width}) : super(key: key);
+  const CustomButton({Key key, this.color, this.hint, this.function, this.fontColor, this.width, this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,7 +108,9 @@ class CustomButton extends StatelessWidget {
         )
       ]),
       child: FlatButton(
-        child: Text(
+        child: child!= null 
+        ? child
+        : Text(
           hint,
           style: GoogleFonts.poppins(
             color: fontColor,

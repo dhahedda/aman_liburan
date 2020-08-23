@@ -100,78 +100,68 @@ class LoginPageState extends State<LoginPage> {
                     top: 0,
                     left: SizeConfig.getWidth(context) / 100 * 10,
                     width: SizeConfig.getWidth(context) / 100 * 80,
-                    child: BlocBuilder<LoginBloc, LoginState>(
-                      builder: (context, state) {
-                        return Form(
-                            key: _formKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  '\nLogin',
-                                  textAlign: TextAlign.start,
-                                  style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold, fontSize: SizeConfig.getWidth(context) / 100 * 6),
-                                ),
-                                _textField("Email"),
-                                _textField("Kata sandi"),
-                                Text('\n\n'),
-
-                                if(state is LoginLoading)
-                                CustomButton(
-                                  color: CustomColor().primary,
-                                  fontColor: Colors.white,
-                                  function: () {},
-                                  child: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child:
-                                        CircularProgressIndicator(
-                                      valueColor:
-                                          new AlwaysStoppedAnimation<
-                                                  Color>(
-                                              Colors
-                                                  .white),
+                    child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+                      return Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                '\nLogin',
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold, fontSize: SizeConfig.getWidth(context) / 100 * 6),
+                              ),
+                              _textField("Email"),
+                              _textField("Kata sandi"),
+                              Text('\n\n'),
+                              state is LoginLoading
+                                  ? CustomButton(
+                                      color: CustomColor().primary,
+                                      fontColor: Colors.white,
+                                      function: () {},
+                                      child: SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                                        ),
+                                      ),
+                                      width: SizeConfig.getWidth(context) / 100 * 80,
+                                    )
+                                  : CustomButton(
+                                      color: CustomColor().primary,
+                                      fontColor: Colors.white,
+                                      function: () async {
+                                        // bool loginSuccess = await UserServices().signIn(_emailController.text, _passwordController.text);
+                                        // bool loginSuccess = await userService.signIn(_emailController.text, _passwordController.text);
+                                        BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
+                                          email: _emailController.text,
+                                          password: _passwordController.text,
+                                        ));
+                                        // if (loginSuccess) {
+                                        //   Navigator.of(context).pushReplacementNamed('/app-base-configuration');
+                                        // }
+                                      },
+                                      hint: 'LOGIN',
+                                      width: SizeConfig.getWidth(context) / 100 * 80,
                                     ),
-                                  ),
-                                  width: SizeConfig.getWidth(context) / 100 * 80,
+                              CustomButton(
+                                color: Colors.white,
+                                fontColor: CustomColor().primary,
+                                function: () => ConsumeApi().tes(),
+                                hint: 'REGISTER',
+                                width: SizeConfig.getWidth(context) / 100 * 80,
+                              ),
+                              FlatButton(
+                                child: Text(
+                                  'Lupa password?',
+                                  style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
                                 ),
-                      
-                                if(!(state is LoginLoading))
-                                CustomButton(
-                                  color: CustomColor().primary,
-                                  fontColor: Colors.white,
-                                  function: () async {
-                                    // bool loginSuccess = await UserServices().signIn(_emailController.text, _passwordController.text);
-                                    // bool loginSuccess = await userService.signIn(_emailController.text, _passwordController.text);
-                                    BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
-                                      email: _emailController.text,
-                                      password: _passwordController.text,
-                                    ));
-                                    // if (loginSuccess) {
-                                    //   Navigator.of(context).pushReplacementNamed('/app-base-configuration');
-                                    // }
-                                  },
-                                  hint: 'LOGIN',
-                                  width: SizeConfig.getWidth(context) / 100 * 80,
-                                ),
-                                CustomButton(
-                                  color: Colors.white,
-                                  fontColor: CustomColor().primary,
-                                  function: () => ConsumeApi().tes(),
-                                  hint: 'REGISTER',
-                                  width: SizeConfig.getWidth(context) / 100 * 80,
-                                ),
-                                FlatButton(
-                                  child: Text(
-                                    'Lupa password?',
-                                    style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
-                                  ),
-                                  onPressed: null,
-                                )
-                              ],
-                            ));
-                      }
-                    )),
+                                onPressed: null,
+                              )
+                            ],
+                          ));
+                    })),
               ],
             ),
           ),
@@ -185,7 +175,7 @@ class LoginPageState extends State<LoginPage> {
     Screen().init(context);
     return BlocListener<LoginBloc, LoginState>(
       listener: (contex, state) {
-        if(state is LoginSuccess) {
+        if (state is LoginSuccess) {
           Navigator.of(context).pushReplacementNamed('/app-base-configuration');
         }
       },

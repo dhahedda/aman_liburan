@@ -1,3 +1,4 @@
+import 'package:aman_liburan/views/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
@@ -100,19 +101,29 @@ class _OfficerHomePageState extends State<OfficerHomePage> {
         Positioned(
           top: 16.0,
           right: 16.0,
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            child: ClipOval(
-              child: SizedBox(
-                // width: 64.0,
-                // height: 64.0,
-                child: Image.asset(
-                  'assets/images/Ellipse 2.png',
-                  fit: BoxFit.cover,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: ClipOval(
+                child: SizedBox(
+                  // width: 64.0,
+                  // height: 64.0,
+                  child: Image.asset(
+                    'assets/images/Ellipse 2.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
+              radius: 30.0,
             ),
-            radius: 30.0,
           ),
         )
       ],
@@ -235,8 +246,8 @@ class _OfficerHomePageState extends State<OfficerHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
-          padding: const EdgeInsets.only(bottom: 72.0),
-          physics: BouncingScrollPhysics(),
+      padding: const EdgeInsets.only(bottom: 72.0),
+      physics: BouncingScrollPhysics(),
       children: [
         _buildHeader(),
         _buildTile(),

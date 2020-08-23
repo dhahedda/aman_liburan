@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:aman_liburan/components/data_session.dart';
 import 'package:aman_liburan/models/user.dart';
 import 'package:aman_liburan/repositories/account_repository.dart';
 import 'package:aman_liburan/services/user_service.dart';
@@ -48,6 +49,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           AccountRepository _accountRepository = AccountRepository();
           Map<String, dynamic> userMap = await _accountRepository.getAccountProfile(params: null);
           user = User.fromMap(userMap);
+
+          DataSession().setUserRole(user.role);
           
           yield LoginSuccess(
               user: user

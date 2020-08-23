@@ -12,6 +12,7 @@ class DataSession{
   final String addProductStatus = 'is_from_add_product';
   final String rememberLogin = 'remember_login';
   final String userId = 'user_id';
+  final String userRole = 'user_role';
 
   DataSession();
 
@@ -123,6 +124,16 @@ class DataSession{
   Future<String> getUserId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(userId);
+  }
+
+  void setUserRole(int currentUserRole) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(userRole, currentUserRole);
+  }
+
+  Future<int> getUserRole() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(userRole);
   }
 
   void removeSession() async {

@@ -18,7 +18,6 @@ class ApiClient {
 
   Future<http.Response> httpGetHelper(String path, String methodName) async {
     final authToken = await DataSession().getAuthToken();
-    // print(authToken);
     Map<String, String> headers = {
       'Accept': '*/*',
       'Content-type': 'application/json',
@@ -26,11 +25,8 @@ class ApiClient {
     };
     final response = await http.get(baseUrl + path, headers: headers).timeout(Duration(seconds: 60));
     if (response.statusCode == 200 && response.body.isNotEmpty) {
-      final json = jsonDecode(response.body);
-      final GlobalResponse globalResponse = GlobalResponse.fromJson(json);
-      if (globalResponse.message == 'Token Expired' || globalResponse.message == 'Unauthorized') {
+      if (response.body == 'token tidak valid') {
         print('Auth token expired. Invoiking refresh token.');
-        // await SigninRepository().postRefreshToken();
         final email = await DataSession().getEmail();
         final password = await DataSession().getPassword();
         await UserServices().signIn(email, password);

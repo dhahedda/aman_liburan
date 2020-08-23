@@ -14,7 +14,6 @@ class HomeStatisticBloc extends Bloc<HomeStatisticEvent, HomeStatisticState> {
   Stream<HomeStatisticState> mapEventToState(
     HomeStatisticEvent event,
   ) async* {
-    // TODO: implement mapEventToState
   }
 
 }

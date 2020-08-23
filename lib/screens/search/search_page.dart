@@ -17,9 +17,6 @@ import 'package:aman_liburan/utilities/widgets/illustration_loading.dart';
 import 'package:aman_liburan/utilities/widgets/spin_kit_loading.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
-// doneTODO handle infinite scroll
-// TODO infinite scroll implemented. still need testing, then clean up (including removing bloc)
-// search api default limit to 9 results only
 class SearchPage extends StatefulWidget {
   final String query;
   final String category;

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:aman_liburan/blocs/home/home_bloc.dart';
-import 'package:aman_liburan/screens/home/dashboard_page_category_grid_item.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:aman_liburan/page.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:aman_liburan/screens/search/search_page.dart';
-import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
 import 'package:aman_liburan/utilities/widgets/custom_sliver_page_header.dart';
 import 'package:aman_liburan/utilities/widgets/illustration_loading.dart';
@@ -34,7 +32,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
 
   Completer<void> _refreshCompleter;
   ScrollController _scrollController;
-  TabController _tabController;
+  // TabController _tabController;
   double heightCategoryMenu;
   bool lastStatus = true;
   int filterSelected;
@@ -347,20 +345,20 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildTabBarPresistentContent(BuildContext context) {
-    // List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
+  // Widget _buildTabBarPresistentContent(BuildContext context) {
+  //   // List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
 
-    return Container(
-      height: SizeConfig.getHeight(context),
-      child: TabBarView(
-        controller: _tabController,
-        physics: ClampingScrollPhysics(),
-        children: _filter.map((String filter) {
-          return DashboardPageCategoryGridItem(categoryId: filter);
-        }).toList(),
-      ),
-    );
-  }
+  //   return Container(
+  //     height: SizeConfig.getHeight(context),
+  //     child: TabBarView(
+  //       controller: _tabController,
+  //       physics: ClampingScrollPhysics(),
+  //       children: _filter.map((String filter) {
+  //         return DashboardPageCategoryGridItem(categoryId: filter);
+  //       }).toList(),
+  //     ),
+  //   );
+  // }
 
   Widget _buildContent(BuildContext context) {
     // List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;

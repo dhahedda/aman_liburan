@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
 import 'package:aman_liburan/utilities/widgets/full_image.dart';
 
-// TODO implement cache image to all image widgets
-// TODO revamp signin UI
-// TODO update assets resolution
-// TODO implement google signin
 class CachedImage extends StatelessWidget {
   final double width;
   final double height;

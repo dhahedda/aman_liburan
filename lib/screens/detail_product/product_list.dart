@@ -72,8 +72,8 @@ class _ProductListPageState extends State<ProductListPage> {
         if (state is ProductListEditNavigated) {
           CustomDialog.hidePopupDialog(context: context);
           Navigator.pop(context);
-          ItemResponse item = state.response.data.item;
-          DetailItemResponse detail = state.response.data.details;
+          // ItemResponse item = state.response.data.item;
+          // DetailItemResponse detail = state.response.data.details;
           _productListBloc.add(ProductListInitiateEvent());
           // Navigator.push(
           //   context,
@@ -543,7 +543,6 @@ class _ProductListPageState extends State<ProductListPage> {
                           style: TextStyle(height: 1.4, color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 13.0),
                         ),
                         Text(
-                          // TODO implement thousand separator on all price
                           // '¥${itemsResponse.price}',
                           '¥${NumberFormat('#,###.##', 'ja_JA').format(itemsResponse.price)}',
                           overflow: TextOverflow.ellipsis,

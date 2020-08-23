@@ -1,14 +1,12 @@
 import 'package:aman_liburan/blocs/login/login_bloc.dart';
 import 'package:aman_liburan/services/consume_api.dart';
 import 'package:aman_liburan/services/Screen.dart';
-import 'package:aman_liburan/services/user_service.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override

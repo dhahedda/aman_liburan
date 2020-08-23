@@ -859,7 +859,7 @@ class _DetailProductPageScreenState extends State<DetailProductPageScreen> {
         }
 
         Widget _buildBody(GlobalResponse response) {
-          String sellerUserId = response.data.seller.id;
+          // String sellerUserId = response.data.seller.id;
           String sellerName = response.data.seller.firstName +
               " " +
               response.data.seller.lastName;

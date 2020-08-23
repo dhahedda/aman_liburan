@@ -1,11 +1,14 @@
+import 'package:aman_liburan/blocs/login/login_bloc.dart';
 import 'package:aman_liburan/services/consume_api.dart';
-import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/services/Screen.dart';
 import 'package:aman_liburan/services/user_service.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,6 +24,16 @@ class LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController(text: 'password');
 
   final _formKey = GlobalKey<FormState>();
+
+  // UserServices userService;
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   userService = Provider.of<UserServices>(context);
+  // }
+
+  @override
   void dispose() {
     _emailController.clear();
     _passwordController.clear();
@@ -87,47 +100,78 @@ class LoginPageState extends State<LoginPage> {
                     top: 0,
                     left: SizeConfig.getWidth(context) / 100 * 10,
                     width: SizeConfig.getWidth(context) / 100 * 80,
-                    child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              '\nLogin',
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold, fontSize: SizeConfig.getWidth(context) / 100 * 6),
-                            ),
-                            _textField("Email"),
-                            _textField("Kata sandi"),
-                            Text('\n\n'),
-                            CustomButton(
-                              color: CustomColor().primary,
-                              fontColor: Colors.white,
-                              function: () async {
-                                bool loginSuccess = await UserServices().signIn(_emailController.text, _passwordController.text);
-                                if (loginSuccess) {
-                                  Navigator.of(context).pushReplacementNamed('/app-base-configuration');
-                                }
-                              },
-                              hint: 'LOGIN',
-                              width: SizeConfig.getWidth(context) / 100 * 80,
-                            ),
-                            CustomButton(
-                              color: Colors.white,
-                              fontColor: CustomColor().primary,
-                              function: () => ConsumeApi().tes(),
-                              hint: 'REGISTER',
-                              width: SizeConfig.getWidth(context) / 100 * 80,
-                            ),
-                            FlatButton(
-                              child: Text(
-                                'Lupa password?',
-                                style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
-                              ),
-                              onPressed: null,
-                            )
-                          ],
-                        ))),
+                    child: BlocBuilder<LoginBloc, LoginState>(
+                      builder: (context, state) {
+                        return Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  '\nLogin',
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.bold, fontSize: SizeConfig.getWidth(context) / 100 * 6),
+                                ),
+                                _textField("Email"),
+                                _textField("Kata sandi"),
+                                Text('\n\n'),
+
+                                if(state is LoginLoading)
+                                CustomButton(
+                                  color: CustomColor().primary,
+                                  fontColor: Colors.white,
+                                  function: () {},
+                                  child: SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child:
+                                        CircularProgressIndicator(
+                                      valueColor:
+                                          new AlwaysStoppedAnimation<
+                                                  Color>(
+                                              Colors
+                                                  .white),
+                                    ),
+                                  ),
+                                  width: SizeConfig.getWidth(context) / 100 * 80,
+                                ),
+                      
+                                if(!(state is LoginLoading))
+                                CustomButton(
+                                  color: CustomColor().primary,
+                                  fontColor: Colors.white,
+                                  function: () async {
+                                    // bool loginSuccess = await UserServices().signIn(_emailController.text, _passwordController.text);
+                                    // bool loginSuccess = await userService.signIn(_emailController.text, _passwordController.text);
+                                    BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
+                                      email: _emailController.text,
+                                      password: _passwordController.text,
+                                    ));
+                                    // if (loginSuccess) {
+                                    //   Navigator.of(context).pushReplacementNamed('/app-base-configuration');
+                                    // }
+                                  },
+                                  hint: 'LOGIN',
+                                  width: SizeConfig.getWidth(context) / 100 * 80,
+                                ),
+                                CustomButton(
+                                  color: Colors.white,
+                                  fontColor: CustomColor().primary,
+                                  function: () => ConsumeApi().tes(),
+                                  hint: 'REGISTER',
+                                  width: SizeConfig.getWidth(context) / 100 * 80,
+                                ),
+                                FlatButton(
+                                  child: Text(
+                                    'Lupa password?',
+                                    style: GoogleFonts.poppins(fontSize: SizeConfig.getWidth(context) / 100 * 5),
+                                  ),
+                                  onPressed: null,
+                                )
+                              ],
+                            ));
+                      }
+                    )),
               ],
             ),
           ),
@@ -139,14 +183,21 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     Screen().init(context);
-    return Container(
-      color: CustomColor().primary,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          body: Center(
-            child: Stack(
-              children: <Widget>[_decoration(), _form(context)],
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (contex, state) {
+        if(state is LoginSuccess) {
+          Navigator.of(context).pushReplacementNamed('/app-base-configuration');
+        }
+      },
+      child: Container(
+        color: CustomColor().primary,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            body: Center(
+              child: Stack(
+                children: <Widget>[_decoration(), _form(context)],
+              ),
             ),
           ),
         ),

@@ -1,19 +1,18 @@
 import 'package:aman_liburan/components/data_session.dart';
+import 'package:aman_liburan/repositories/account_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-class UserServices {
+class UserServices with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  var user;
 
   // Future<bool> signUp(String email, String password) async {}
-  Future<bool> signIn(String user, String password) async {
+  Future<bool> signIn(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: user, password: password);
-      // FirebaseUser firebaseUser = await _auth.currentUser();
-      // print('_auth.currentUser()');
-      // print(await _auth.currentUser());
-      // print(await jwt());
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       await jwt();
-      DataSession().setEmail(user);
+      DataSession().setEmail(email);
       DataSession().setPassword(password);
       DataSession().setStatusLogin(true);
       return true;

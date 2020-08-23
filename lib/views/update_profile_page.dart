@@ -1,4 +1,4 @@
-import 'package:aman_liburan/services/screen.dart';
+import 'package:aman_liburan/services/Screen.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

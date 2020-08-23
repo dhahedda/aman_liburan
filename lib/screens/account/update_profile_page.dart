@@ -58,7 +58,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   }
 
   Widget _fieldFullName() {
-    return _textField(
+    return TextField(
       hint: 'Nama Lengkap',
       controller: _fullname,
     );
@@ -111,21 +111,21 @@ class _UpdateProfileState extends State<UpdateProfile> {
   }
 
   Widget _fieldAge() {
-    return _textField(
+    return TextField(
       hint: 'Usia Pengguna',
       controller: _age,
     );
   }
 
   Widget _fieldDomicile() {
-    return _textField(
+    return TextField(
       hint: 'Domisili',
       controller: _age,
     );
   }
 
   Widget _fieldUserName() {
-    return _textField(
+    return TextField(
       hint: 'Username',
       controller: _username,
     );
@@ -142,14 +142,14 @@ class _UpdateProfileState extends State<UpdateProfile> {
   }
 
   Widget _fieldPassword() {
-    return _textField(
+    return TextField(
       hint: 'Password',
       controller: _username,
     );
   }
 
   Widget _fieldPasswordAgain() {
-    return _textField(
+    return TextField(
       hint: 'Ketik ulang password',
       controller: _username,
     );
@@ -201,15 +201,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
   }
 }
 
-class _textField extends StatefulWidget {
+class TextField extends StatefulWidget {
   final String hint;
   final TextEditingController controller;
-  const _textField({Key key, this.hint, this.controller}) : super(key: key);
+  const TextField({Key key, this.hint, this.controller}) : super(key: key);
   @override
-  __textFieldState createState() => __textFieldState();
+  _TextFieldState createState() => _TextFieldState();
 }
 
-class __textFieldState extends State<_textField> {
+class _TextFieldState extends State<TextField> {
   final formValidator = MultiValidator([
     RequiredValidator(errorText: 'harus diisi'),
     MinLengthValidator(8, errorText: 'Password minimal 8 karakter'),

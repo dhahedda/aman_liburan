@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:aman_liburan/blocs/login/login_bloc.dart';
 import 'package:aman_liburan/services/user_service.dart';
-import 'package:aman_liburan/views/login_page.dart';
+import 'package:aman_liburan/screens/account/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,9 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:aman_liburan/app_base_configuration.dart';
 import 'package:aman_liburan/app_localizations.dart';
-import 'package:aman_liburan/screens/account/account_page.dart';
 import 'package:aman_liburan/screens/search/search_page.dart';
-import 'package:aman_liburan/screens/signin/signin_page.dart';
 import 'package:aman_liburan/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -97,10 +95,8 @@ class NiGaijin extends StatelessWidget {
           // Routing Configuration
           // TODO update routes
           // TODO allow location permission transition is not smooth
-          '/signin-page': (BuildContext context) => SigninPage(),
           '/login-page': (BuildContext context) => LoginPage(),
           '/app-base-configuration': (BuildContext context) => AppBaseConfiguration(),
-          '/account-page': (BuildContext context) => AccountPage(),
           '/search-page': (BuildContext context) => SearchPage(),
         },
         debugShowCheckedModeBanner: false,

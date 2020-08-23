@@ -1,4 +1,4 @@
-import 'package:aman_liburan/views/profile_page.dart';
+import 'package:aman_liburan/screens/account/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;

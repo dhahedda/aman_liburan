@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:aman_liburan/blocs/product_list/product_list_bloc.dart';
-import 'package:aman_liburan/models/param/api_param.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
-import 'package:aman_liburan/screens/add_product/add_product_1st_page.dart';
 import 'package:aman_liburan/screens/detail_product/detail_product_page.dart';
 import 'package:aman_liburan/utilities/styles/custom_styles.dart';
 import 'package:aman_liburan/utilities/widgets/cached_image.dart';
@@ -77,31 +75,31 @@ class _ProductListPageState extends State<ProductListPage> {
           ItemResponse item = state.response.data.item;
           DetailItemResponse detail = state.response.data.details;
           _productListBloc.add(ProductListInitiateEvent());
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddProduct1stPage(
-                isEditProduct: true,
-                editProductParam: EditProductParam(
-                  product: Product(
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    description: item.description,
-                    categoryIds: item.categoryIds,
-                    latitude: item.latitude,
-                    longitude: item.longitude,
-                  ),
-                  productDetail: ProductDetail(
-                    brand: detail.brand,
-                    condition: detail.condition,
-                    yearsOwned: detail.yearsOwned,
-                    modelName: detail.modelName,
-                  ),
-                ),
-              ),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => AddProduct1stPage(
+          //       isEditProduct: true,
+          //       editProductParam: EditProductParam(
+          //         product: Product(
+          //           id: item.id,
+          //           name: item.name,
+          //           price: item.price,
+          //           description: item.description,
+          //           categoryIds: item.categoryIds,
+          //           latitude: item.latitude,
+          //           longitude: item.longitude,
+          //         ),
+          //         productDetail: ProductDetail(
+          //           brand: detail.brand,
+          //           condition: detail.condition,
+          //           yearsOwned: detail.yearsOwned,
+          //           modelName: detail.modelName,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // );
         }
         if (state is ProductListError) {
           CustomDialog.hidePopupDialog(context: context);

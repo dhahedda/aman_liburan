@@ -43,6 +43,13 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     return _scrollController.hasClients && _scrollController.offset > (200 - kToolbarHeight);
   }
 
+  List<String> _filter = [
+    "Semua Wisata",
+    "Wisata Air",
+    "Wisata Alam",
+    "Wisata Gunung",
+  ];
+
   void _scrollListener() {
     if (isShrink != lastStatus) {
       setState(() {
@@ -135,7 +142,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildAppBarHeaderText(BuildContext context, HomeState state) {
+  Widget _buildAppBarHeaderText(BuildContext context) {
     return AnimatedOpacity(
       opacity: isShrink ? 0.8 : 1.0,
       duration: Duration(milliseconds: 500),
@@ -180,7 +187,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildAppBarSearchInput(BuildContext context, HomeState state) {
+  Widget _buildAppBarSearchInput(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
@@ -219,7 +226,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildSvg(BuildContext context, HomeState state) {
+  Widget _buildSvg(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: SvgPicture.asset(
@@ -230,7 +237,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildAppBarHeader(BuildContext context, HomeState state) {
+  Widget _buildAppBarHeader(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
         color: Theme.Colors.turqoiseNormal,
@@ -239,8 +246,8 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(flex: 2, child: _buildAppBarHeaderText(context, state)),
-              Expanded(flex: 1, child: _buildSvg(context, state)),
+              Expanded(flex: 2, child: _buildAppBarHeaderText(context)),
+              Expanded(flex: 1, child: _buildSvg(context)),
             ],
           ),
         ),
@@ -248,25 +255,18 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildFilterProductChips(BuildContext context, HomeState state) {
-    List<String> filter = [
-      "Semua Wisata",
-      "Wisata Air",
-      "Wisata Alam",
-      "Wisata Gunung",
-    ];
-
+  Widget _buildFilterProductChips(BuildContext context) {
     return Container(
       height: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: filter.length,
+        itemCount: _filter.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.only(right: 4.0),
             child: ChoiceChip(
               label: Text(
-                filter[index],
+                _filter[index],
                 style: TextStyle(
                   color: (filterSelected == index) ? Colors.white : colorGreyGaijin,
                   letterSpacing: 1,
@@ -292,11 +292,11 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
                 setState(() {
                   filterSelected = selected ? index : filterSelected;
                 });
-                Navigator.of(context).push(
-                  PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => SearchPage(query: filter[index]),
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   PageRouteBuilder(
+                //     pageBuilder: (context, animation1, animation2) => SearchPage(query: _filter[index]),
+                //   ),
+                // );
               },
             ),
           );
@@ -305,7 +305,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildAppBarContent(BuildContext context, HomeState state) {
+  Widget _buildAppBarContent(BuildContext context) {
     return SliverPersistentHeader(
       delegate: CustomSliverPageHeader(
         minHeight: 120,
@@ -321,23 +321,23 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
                         children: [
                           Expanded(
                             flex: 8,
-                            child: _buildAppBarSearchInput(context, state),
+                            child: _buildAppBarSearchInput(context),
                           ),
                           Expanded(
                             flex: 1,
-                            child: _buildSvg(context, state),
+                            child: _buildSvg(context),
                           ),
                         ],
                       ),
                     )
                   : Padding(
                       padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
-                      child: _buildAppBarSearchInput(context, state),
+                      child: _buildAppBarSearchInput(context),
                     ),
               SizedBox(height: 4.0),
               Padding(
                 padding: EdgeInsets.only(left: 16.0),
-                child: _buildFilterProductChips(context, state),
+                child: _buildFilterProductChips(context),
               ),
             ],
           ),
@@ -347,46 +347,44 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget _buildTabBarPresistentContent(
-    BuildContext context,
-    HomeState state,
-  ) {
-    List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
+  Widget _buildTabBarPresistentContent(BuildContext context) {
+    // List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
 
     return Container(
       height: SizeConfig.getHeight(context),
       child: TabBarView(
         controller: _tabController,
         physics: ClampingScrollPhysics(),
-        children: listCategories.map((CategoriesResponse category) {
-          return DashboardPageCategoryGridItem(categoryId: category.name);
+        children: _filter.map((String filter) {
+          return DashboardPageCategoryGridItem(categoryId: filter);
         }).toList(),
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context, HomeState state) {
-    List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
+  Widget _buildContent(BuildContext context) {
+    // List<CategoriesResponse> listCategories = (state as OnHomeResponse).response.data.categories;
 
     return SafeArea(
       child: DefaultTabController(
-        length: listCategories.length,
+        length: _filter.length,
         child: NestedScrollView(
           key: PageStorageKey(BottomPage.page_1),
           physics: NeverScrollableScrollPhysics(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              _buildAppBarHeader(context, state),
-              _buildAppBarContent(context, state),
+              _buildAppBarHeader(context),
+              _buildAppBarContent(context),
             ];
           },
-          body: _buildTabBarPresistentContent(context, state),
+          // body: _buildTabBarPresistentContent(context),
+          body: Container(),
         ),
       ),
     );
   }
 
-  Widget _buildBody(BuildContext context, HomeState state) {
+  Widget _buildBody(BuildContext context) {
     return Container(
       color: Theme.Colors.turqoiseNormal,
       child: SafeArea(
@@ -398,8 +396,8 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
               );
               return _refreshCompleter.future;
             },
-            child: Container(),
-            // child: _buildContent(context, state),
+            // child: Container(),
+            child: _buildContent(context),
           ),
         ),
       ),
@@ -420,7 +418,7 @@ class _HomeState extends State<HomeScreen> with SingleTickerProviderStateMixin {
           return IllustrationLoading();
         } else if (state is OnHomeResponse) {
           if (state.response != null) {
-            return _buildBody(context, state);
+            return _buildBody(context);
           } else {
             return _buildError(context, state.response.message);
           }

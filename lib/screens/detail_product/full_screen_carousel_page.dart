@@ -4,7 +4,6 @@ import 'package:aman_liburan/models/carousel_model.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
 import 'package:aman_liburan/utilities/widgets/horizontal_line.dart';
-import 'package:aman_liburan/screens/create_appointment/create_appointment_page.dart';
 import 'package:aman_liburan/utilities/styles/theme.dart' as Theme;
 
 class FullScreenCarouselPage extends StatefulWidget {
@@ -33,13 +32,13 @@ class _FullScreenCarouselPageState extends State<FullScreenCarouselPage> {
     GlobalResponse response,
     BuildContext context,
   ) {
-    Navigator.of(context).pop();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CreateAppointmentPage(response: response),
-      ),
-    );
+    // Navigator.of(context).pop();
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => CreateAppointmentPage(response: response),
+    //   ),
+    // );
   }
   
   void onButtonAppointmentPressed(

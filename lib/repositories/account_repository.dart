@@ -13,26 +13,9 @@ class AccountRepository{
       final utf8Body = utf8.decode(response.body.runes.toList());
       final json = jsonDecode(utf8Body);
       return json;
-      // return GlobalResponse.fromJson(json);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       return GlobalResponse.withError("$error");
-    }
-  }
-
-  Future<GlobalResponse> getSellerAccountProfile({@required AccountSellerParam params}) async {
-    try {
-      String pathUrl = '/profile_visitor?user_id='+params.userId;
-      final http.Response response =
-          await ApiClient().httpGetHelper(pathUrl, 'getProfileVisitor');
-      final utf8Body = utf8.decode(response.body.runes.toList());
-      final json = jsonDecode(utf8Body);
-      return GlobalResponse.fromJson(json);
-    } catch (error, stacktrace) {
-      String errorMessage =
-          "Exception occured: ${error.toString()} stackTrace: ${stacktrace.toString()}";
-      print(errorMessage);
-      return GlobalResponse.withError(errorMessage);
     }
   }
 
@@ -47,29 +30,4 @@ class AccountRepository{
       return GlobalResponse.withError("$error");
     }
   }
-
-  Future<GlobalResponse> updateProfile({@required UpdateProfileParam params}) async {
-    try {
-      final http.Response response = await ApiClient().httpPostHelper('/update_profile', params.toJson(), 'updateProfile');
-      final utf8Body = utf8.decode(response.body.runes.toList());
-      final json = jsonDecode(utf8Body);
-      return GlobalResponse.fromJson(json);
-    } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
-      return GlobalResponse.withError("$error");
-    }
-  }
-
-  Future<GlobalResponse> updatePayment({@required UpdatePaymentParam params}) async {
-    try {
-      final http.Response response = await ApiClient().httpPostHelper('/update_payment_method', params.toJson(), 'updatePaymentMethod');
-      final utf8Body = utf8.decode(response.body.runes.toList());
-      final json = jsonDecode(utf8Body);
-      return GlobalResponse.fromJson(json);
-    } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
-      return GlobalResponse.withError("$error");
-    }
-  }
-
 }

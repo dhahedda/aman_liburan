@@ -13,8 +13,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:aman_liburan/models/carousel_model.dart';
 import 'package:aman_liburan/models/catalog_model.dart';
 import 'package:aman_liburan/models/response/api_response.dart';
-import 'package:aman_liburan/screens/account/account_seller_page.dart';
-import 'package:aman_liburan/screens/create_appointment/create_appointment_page.dart';
 import 'package:aman_liburan/screens/detail_product/detail_map_page.dart';
 import 'package:aman_liburan/screens/search/search_page.dart';
 import 'package:aman_liburan/utilities/size_config.dart';
@@ -68,13 +66,13 @@ class _DetailProductPageScreenState extends State<DetailProductPageScreen> {
     GlobalResponse response,
     BuildContext context,
   ) {
-    Navigator.of(context).pop();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CreateAppointmentPage(response: response),
-      ),
-    );
+    // Navigator.of(context).pop();
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => CreateAppointmentPage(response: response),
+    //   ),
+    // );
   }
 
   void onButtonAppointmentPressed(
@@ -940,14 +938,14 @@ class _DetailProductPageScreenState extends State<DetailProductPageScreen> {
                                   onTap: () {
                                     print("View all pressed!");
 
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => AccountSellerPage(
-                                          userId: sellerUserId,
-                                        ),
-                                      ),
-                                    );
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => AccountSellerPage(
+                                    //       userId: sellerUserId,
+                                    //     ),
+                                    //   ),
+                                    // );
                                   },
                                   child: Text(
                                     "View all",
@@ -1270,15 +1268,15 @@ class _DetailProductPageScreenState extends State<DetailProductPageScreen> {
                                             onPressed: () {
                                               print("View Profile Pressed");
 
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AccountSellerPage(
-                                                    userId: sellerUserId,
-                                                  ),
-                                                ),
-                                              );
+                                              // Navigator.push(
+                                              //   context,
+                                              //   MaterialPageRoute(
+                                              //     builder: (context) =>
+                                              //         AccountSellerPage(
+                                              //       userId: sellerUserId,
+                                              //     ),
+                                              //   ),
+                                              // );
                                             },
                                             padding: const EdgeInsets.all(10.0),
                                             shape: RoundedRectangleBorder(

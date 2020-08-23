@@ -5,16 +5,15 @@ import 'package:aman_liburan/bottom_navigation_government.dart';
 import 'package:aman_liburan/components/data_session.dart';
 import 'package:aman_liburan/screens/check_in/check_in_form_page.dart';
 import 'package:aman_liburan/screens/check_out/check_out_page.dart';
+import 'package:aman_liburan/screens/government/government_home_page.dart';
 import 'package:aman_liburan/screens/home/home_page.dart';
 import 'package:aman_liburan/screens/home/officer_home_page.dart';
 import 'package:aman_liburan/services/user_service.dart';
-import 'package:aman_liburan/views/government/government_home_page.dart';
-import 'package:aman_liburan/views/login_page.dart';
-import 'package:aman_liburan/views/profile_page.dart';
+import 'package:aman_liburan/screens/account/login_page.dart';
+import 'package:aman_liburan/screens/account/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aman_liburan/page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class AppBaseConfiguration extends StatefulWidget {
   final BottomPage page;
